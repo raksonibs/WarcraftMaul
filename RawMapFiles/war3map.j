@@ -1,7 +1,7 @@
 globals
 //globals from HCL:
 constant boolean LIBRARY_HCL=true
-string HCL__command= ""
+string HCL___command= ""
 //endglobals from HCL
 //globals from MMD:
 constant boolean LIBRARY_MMD=true
@@ -26,36 +26,36 @@ constant integer MMD_FLAG_LOSER= 102
 constant integer MMD_FLAG_WINNER= 103
 constant integer MMD_FLAG_LEAVER= 104
 constant integer MMD_FLAG_PRACTICING= 105
-constant boolean MMD__SHOW_DEBUG_MESSAGES= true
+constant boolean MMD___SHOW_DEBUG_MESSAGES= true
        
-constant string MMD__chars= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+= \\!@#$%^&*()/?>.<,;:'\"{}[]|`~"
-constant integer MMD__num_chars= StringLength(MMD__chars)
-string array MMD__flags
-string array MMD__goals
-string array MMD__ops
-string array MMD__types
-string array MMD__suggestions
-boolean MMD__initialized= false
+constant string MMD___chars= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+= \\!@#$%^&*()/?>.<,;:'\"{}[]|`~"
+constant integer MMD___num_chars= StringLength(MMD___chars)
+string array MMD___flags
+string array MMD___goals
+string array MMD___ops
+string array MMD___types
+string array MMD___suggestions
+boolean MMD___initialized= false
                
-gamecache MMD__gc= null
-constant string MMD__ESCAPED_CHARS= " \\"
+gamecache MMD___gc= null
+constant string MMD___ESCAPED_CHARS= " \\"
        
-constant integer MMD__CURRENT_VERSION= 1
-constant integer MMD__MINIMUM_PARSER_VERSION= 1
-constant string MMD__FILENAME= "MMD.Dat"
-constant string MMD__M_KEY_VAL= "val:"
-constant string MMD__M_KEY_CHK= "chk:"
-constant integer MMD__NUM_SENDERS_NAIVE= 1
-constant integer MMD__NUM_SENDERS_SAFE= 3
-integer MMD__num_senders= MMD__NUM_SENDERS_NAIVE
-integer MMD__num_msg= 0
+constant integer MMD___CURRENT_VERSION= 1
+constant integer MMD___MINIMUM_PARSER_VERSION= 1
+constant string MMD___FILENAME= "MMD.Dat"
+constant string MMD___M_KEY_VAL= "val:"
+constant string MMD___M_KEY_CHK= "chk:"
+constant integer MMD___NUM_SENDERS_NAIVE= 1
+constant integer MMD___NUM_SENDERS_SAFE= 3
+integer MMD___num_senders= MMD___NUM_SENDERS_NAIVE
+integer MMD___num_msg= 0
        
-timer MMD__clock= CreateTimer()
-string array MMD__q_msg
-real array MMD__q_time
-integer array MMD__q_index
-integer MMD__q_head= 0
-integer MMD__q_tail= 0
+timer MMD___clock= CreateTimer()
+string array MMD___q_msg
+real array MMD___q_time
+integer array MMD___q_index
+integer MMD___q_head= 0
+integer MMD___q_tail= 0
 //endglobals from MMD
     // User-defined
 integer udg_spawnamount= 0
@@ -306,68 +306,68 @@ destructable gg_dest_B000_0160= null
 trigger l__library_init
 
 //JASSHelper struct globals:
-constant integer si__MMD__QueueNode=1
-integer si__MMD__QueueNode_F=0
-integer si__MMD__QueueNode_I=0
-integer array si__MMD__QueueNode_V
-real array s__MMD__QueueNode_timeout
-string array s__MMD__QueueNode_msg
-integer array s__MMD__QueueNode_checksum
-string array s__MMD__QueueNode_key
-integer array s__MMD__QueueNode_next
-trigger st__MMD__QueueNode_onDestroy
+constant integer si__MMD___QueueNode=1
+integer si__MMD___QueueNode_F=0
+integer si__MMD___QueueNode_I=0
+integer array si__MMD___QueueNode_V
+real array s__MMD___QueueNode_timeout
+string array s__MMD___QueueNode_msg
+integer array s__MMD___QueueNode_checksum
+string array s__MMD___QueueNode_key
+integer array s__MMD___QueueNode_next
+trigger st__MMD___QueueNode_onDestroy
 integer f__arg_this
 
 endglobals
 
 
-//Generated method caller for MMD__QueueNode.onDestroy
-function sc__MMD__QueueNode_onDestroy takes integer this returns nothing
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this])
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this])
-            set s__MMD__QueueNode_msg[this]=null
-            set s__MMD__QueueNode_key[this]=null
-            set s__MMD__QueueNode_next[this]=0
+//Generated method caller for MMD___QueueNode.onDestroy
+function sc__MMD___QueueNode_onDestroy takes integer this returns nothing
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this])
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this])
+            set s__MMD___QueueNode_msg[this]=null
+            set s__MMD___QueueNode_key[this]=null
+            set s__MMD___QueueNode_next[this]=0
 endfunction
 
-//Generated allocator of MMD__QueueNode
-function s__MMD__QueueNode__allocate takes nothing returns integer
- local integer this=si__MMD__QueueNode_F
+//Generated allocator of MMD___QueueNode
+function s__MMD___QueueNode__allocate takes nothing returns integer
+ local integer this=si__MMD___QueueNode_F
     if (this!=0) then
-        set si__MMD__QueueNode_F=si__MMD__QueueNode_V[this]
+        set si__MMD___QueueNode_F=si__MMD___QueueNode_V[this]
     else
-        set si__MMD__QueueNode_I=si__MMD__QueueNode_I+1
-        set this=si__MMD__QueueNode_I
+        set si__MMD___QueueNode_I=si__MMD___QueueNode_I+1
+        set this=si__MMD___QueueNode_I
     endif
     if (this>8190) then
         return 0
     endif
 
-   set s__MMD__QueueNode_next[this]= 0
-    set si__MMD__QueueNode_V[this]=-1
+   set s__MMD___QueueNode_next[this]= 0
+    set si__MMD___QueueNode_V[this]=-1
  return this
 endfunction
 
-//Generated destructor of MMD__QueueNode
-function sc__MMD__QueueNode_deallocate takes integer this returns nothing
+//Generated destructor of MMD___QueueNode
+function sc__MMD___QueueNode_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__MMD__QueueNode_V[this]!=-1) then
+    elseif (si__MMD___QueueNode_V[this]!=-1) then
         return
     endif
     set f__arg_this=this
-    call TriggerEvaluate(st__MMD__QueueNode_onDestroy)
-    set si__MMD__QueueNode_V[this]=si__MMD__QueueNode_F
-    set si__MMD__QueueNode_F=this
+    call TriggerEvaluate(st__MMD___QueueNode_onDestroy)
+    set si__MMD___QueueNode_V[this]=si__MMD___QueueNode_F
+    set si__MMD___QueueNode_F=this
 endfunction
 
 //library HCL:
     
     function HCL_GetCommandString takes nothing returns string
-        return HCL__command
+        return HCL___command
     endfunction
     
-    function HCL__init takes nothing returns nothing
+    function HCL___init takes nothing returns nothing
         local integer i
         local integer j
         local integer h
@@ -406,7 +406,7 @@ endfunction
                 set v=h / 6
                 set h=h - v * 6
                 call SetPlayerHandicap(Player(i), 0.5 + h / 10.0)
-                set HCL__command=HCL__command + SubString(chars, v, v + 1)
+                set HCL___command=HCL___command + SubString(chars, v, v + 1)
             endif
             set i=i + 1
         endloop
@@ -425,44 +425,44 @@ endfunction
    
     ///Triggered when tampering is detected. Increases the number of safeguards against tampering.
     function MMD_RaiseGuard takes string reason returns nothing
-        set MMD__num_senders=MMD__NUM_SENDERS_SAFE //increase number of players voting on each message
+        set MMD___num_senders=MMD___NUM_SENDERS_SAFE //increase number of players voting on each message
     endfunction
 
     ///Returns seconds elapsed in game time
-    function MMD__time takes nothing returns real
-        return TimerGetElapsed(MMD__clock)
+    function MMD___time takes nothing returns real
+        return TimerGetElapsed(MMD___clock)
     endfunction
    
     ///Initializes the char-to-int conversion
-    function MMD__prepC2I takes nothing returns nothing
+    function MMD___prepC2I takes nothing returns nothing
         local integer i= 0
         local string id
         loop
-            exitwhen i >= MMD__num_chars
-            set id=SubString(MMD__chars, i, i + 1)
+            exitwhen i >= MMD___num_chars
+            set id=SubString(MMD___chars, i, i + 1)
             if id == StringCase(id, true) then
                 set id=id + "U"
             endif
-            call StoreInteger(MMD__gc, "c2i", id, i)
+            call StoreInteger(MMD___gc, "c2i", id, i)
             set i=i + 1
         endloop
     endfunction
     ///Converts a character to an integer
-    function MMD__C2I takes string c returns integer
+    function MMD___C2I takes string c returns integer
         local integer i
         local string id= c
         if id == StringCase(id, true) then
             set id=id + "U"
         endif
-        set i=GetStoredInteger(MMD__gc, "c2i", id)
-        if ( i < 0 or i >= MMD__num_chars or SubString(MMD__chars, i, i + 1) != c ) and HaveStoredInteger(MMD__gc, "c2i", id) then
+        set i=GetStoredInteger(MMD___gc, "c2i", id)
+        if ( i < 0 or i >= MMD___num_chars or SubString(MMD___chars, i, i + 1) != c ) and HaveStoredInteger(MMD___gc, "c2i", id) then
             //A cheater sent a fake sync to screw with the cached values
             set i=0
             loop
-                exitwhen i >= MMD__num_chars //just a weird character
-                if c == SubString(MMD__chars, i, i + 1) then //cheating!
+                exitwhen i >= MMD___num_chars //just a weird character
+                if c == SubString(MMD___chars, i, i + 1) then //cheating!
                     call MMD_RaiseGuard("c2i poisoned")
-                    call StoreInteger(MMD__gc, "c2i", id, i)
+                    call StoreInteger(MMD___gc, "c2i", id, i)
                     exitwhen true
                 endif
                 set i=i + 1
@@ -472,55 +472,55 @@ endfunction
     endfunction
 
     ///Computes a weak hash value, hopefully secure enough for our purposes
-    function MMD__poor_hash takes string s,integer seed returns integer
+    function MMD___poor_hash takes string s,integer seed returns integer
         local integer n= StringLength(s)
         local integer m= n + seed
         local integer i= 0
         loop
             exitwhen i >= n
-            set m=m * 41 + MMD__C2I(SubString(s, i, i + 1))
+            set m=m * 41 + MMD___C2I(SubString(s, i, i + 1))
             set i=i + 1
         endloop
         return m
     endfunction
 
     ///Stores previously sent messages for tamper detection purposes
-        function s__MMD__QueueNode_create takes integer id,string msg returns integer
-            local integer this= s__MMD__QueueNode__allocate()
-            set s__MMD__QueueNode_timeout[this]=(TimerGetElapsed(MMD__clock)) + 7.0 + GetRandomReal(0, 2 + 0.1 * GetPlayerId(GetLocalPlayer())) // INLINED!!
-            set s__MMD__QueueNode_msg[this]=msg
-            set s__MMD__QueueNode_checksum[this]=MMD__poor_hash(s__MMD__QueueNode_msg[this] , id)
-            set s__MMD__QueueNode_key[this]=I2S(id)
+        function s__MMD___QueueNode_create takes integer id,string msg returns integer
+            local integer this= s__MMD___QueueNode__allocate()
+            set s__MMD___QueueNode_timeout[this]=(TimerGetElapsed(MMD___clock)) + 7.0 + GetRandomReal(0, 2 + 0.1 * GetPlayerId(GetLocalPlayer())) // INLINED!!
+            set s__MMD___QueueNode_msg[this]=msg
+            set s__MMD___QueueNode_checksum[this]=MMD___poor_hash(s__MMD___QueueNode_msg[this] , id)
+            set s__MMD___QueueNode_key[this]=I2S(id)
             return this
         endfunction
-        function s__MMD__QueueNode_onDestroy takes integer this returns nothing
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this])
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this])
-            set s__MMD__QueueNode_msg[this]=null
-            set s__MMD__QueueNode_key[this]=null
-            set s__MMD__QueueNode_next[this]=0
+        function s__MMD___QueueNode_onDestroy takes integer this returns nothing
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this])
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this])
+            set s__MMD___QueueNode_msg[this]=null
+            set s__MMD___QueueNode_key[this]=null
+            set s__MMD___QueueNode_next[this]=0
         endfunction
 
-//Generated destructor of MMD__QueueNode
-function s__MMD__QueueNode_deallocate takes integer this returns nothing
+//Generated destructor of MMD___QueueNode
+function s__MMD___QueueNode_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__MMD__QueueNode_V[this]!=-1) then
+    elseif (si__MMD___QueueNode_V[this]!=-1) then
         return
     endif
-    call s__MMD__QueueNode_onDestroy(this)
-    set si__MMD__QueueNode_V[this]=si__MMD__QueueNode_F
-    set si__MMD__QueueNode_F=this
+    call s__MMD___QueueNode_onDestroy(this)
+    set si__MMD___QueueNode_V[this]=si__MMD___QueueNode_F
+    set si__MMD___QueueNode_F=this
 endfunction
-        function s__MMD__QueueNode_send takes integer this returns nothing
-            call StoreInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this], s__MMD__QueueNode_checksum[this])
-            call StoreInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this], s__MMD__QueueNode_checksum[this])
-            call SyncStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this])
-            call SyncStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this])
+        function s__MMD___QueueNode_send takes integer this returns nothing
+            call StoreInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this], s__MMD___QueueNode_checksum[this])
+            call StoreInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this], s__MMD___QueueNode_checksum[this])
+            call SyncStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this])
+            call SyncStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this])
         endfunction
    
     ///Returns true for a fixed size uniform random subset of players in the game
-    function MMD__isEmitter takes nothing returns boolean
+    function MMD___isEmitter takes nothing returns boolean
         local integer i= 0
         local integer n= 0
         local integer r
@@ -529,12 +529,12 @@ endfunction
         loop
             exitwhen i >= 12
             if GetPlayerController(Player(i)) == MAP_CONTROL_USER and GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING then
-                if n < MMD__num_senders then //initializing picks
+                if n < MMD___num_senders then //initializing picks
                     set picks[n]=i
                     set pick_flags[i]=true
                 else //maintain the invariant 'P(being picked) = c/n'
                     set r=GetRandomInt(0, n)
-                    if r < MMD__num_senders then
+                    if r < MMD___num_senders then
                         set pick_flags[picks[r]]=false
                         set picks[r]=i
                         set pick_flags[i]=true
@@ -548,72 +548,72 @@ endfunction
     endfunction
    
     ///Places meta-data in the replay and in network traffic
-    function MMD__emit takes string message returns nothing
+    function MMD___emit takes string message returns nothing
         local integer q
-        if not MMD__initialized then
+        if not MMD___initialized then
             call BJDebugMsg("MMD Emit Error: Library not initialized yet.")
             return
         endif
        
         //remember sent messages for tamper check
-        set q=s__MMD__QueueNode_create(MMD__num_msg , message)
-        if MMD__q_head == 0 then
-            set MMD__q_head=q
+        set q=s__MMD___QueueNode_create(MMD___num_msg , message)
+        if MMD___q_head == 0 then
+            set MMD___q_head=q
         else
-            set s__MMD__QueueNode_next[MMD__q_tail]=q
+            set s__MMD___QueueNode_next[MMD___q_tail]=q
         endif
-        set MMD__q_tail=q
+        set MMD___q_tail=q
                
         //send new message
-        set MMD__num_msg=MMD__num_msg + 1
-        if MMD__isEmitter() then
-            call s__MMD__QueueNode_send(q)
+        set MMD___num_msg=MMD___num_msg + 1
+        if MMD___isEmitter() then
+            call s__MMD___QueueNode_send(q)
         endif
     endfunction
 
     ///Performs tamper checks
-    function MMD__tick takes nothing returns nothing
+    function MMD___tick takes nothing returns nothing
         local integer q
         local integer i
        
         //check previously sent messages for tampering
-        set q=MMD__q_head
+        set q=MMD___q_head
         loop
-            exitwhen q == 0 or s__MMD__QueueNode_timeout[q] >= (TimerGetElapsed(MMD__clock)) // INLINED!!
-            if not HaveStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[q], s__MMD__QueueNode_msg[q]) then
+            exitwhen q == 0 or s__MMD___QueueNode_timeout[q] >= (TimerGetElapsed(MMD___clock)) // INLINED!!
+            if not HaveStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[q], s__MMD___QueueNode_msg[q]) then
                 call MMD_RaiseGuard("message skipping")
-                call s__MMD__QueueNode_send(q)
-            elseif not HaveStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[q], s__MMD__QueueNode_key[q]) then
+                call s__MMD___QueueNode_send(q)
+            elseif not HaveStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[q], s__MMD___QueueNode_key[q]) then
                 call MMD_RaiseGuard("checksum skipping")
-                call s__MMD__QueueNode_send(q)
-            elseif GetStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[q], s__MMD__QueueNode_msg[q]) != s__MMD__QueueNode_checksum[q] then
+                call s__MMD___QueueNode_send(q)
+            elseif GetStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[q], s__MMD___QueueNode_msg[q]) != s__MMD___QueueNode_checksum[q] then
                 call MMD_RaiseGuard("message tampering")
-                call s__MMD__QueueNode_send(q)
-            elseif GetStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[q], s__MMD__QueueNode_key[q]) != s__MMD__QueueNode_checksum[q] then
+                call s__MMD___QueueNode_send(q)
+            elseif GetStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[q], s__MMD___QueueNode_key[q]) != s__MMD___QueueNode_checksum[q] then
                 call MMD_RaiseGuard("checksum tampering")
-                call s__MMD__QueueNode_send(q)
+                call s__MMD___QueueNode_send(q)
             endif
-            set MMD__q_head=s__MMD__QueueNode_next[q]
-            call s__MMD__QueueNode_deallocate(q)
-            set q=MMD__q_head
+            set MMD___q_head=s__MMD___QueueNode_next[q]
+            call s__MMD___QueueNode_deallocate(q)
+            set q=MMD___q_head
         endloop
-        if MMD__q_head == 0 then
-            set MMD__q_tail=0
+        if MMD___q_head == 0 then
+            set MMD___q_tail=0
         endif
        
         //check for future message tampering
         set i=0
         loop
-            exitwhen not HaveStoredInteger(MMD__gc, MMD__M_KEY_CHK + I2S(MMD__num_msg), I2S(MMD__num_msg))
+            exitwhen not HaveStoredInteger(MMD___gc, MMD___M_KEY_CHK + I2S(MMD___num_msg), I2S(MMD___num_msg))
             call MMD_RaiseGuard("message insertion")
-            call MMD__emit("Blank")
+            call MMD___emit("Blank")
             set i=i + 1
             exitwhen i >= 10
         endloop
     endfunction
    
     ///Replaces control characters with escape sequences
-    function MMD__pack takes string value returns string
+    function MMD___pack takes string value returns string
         local integer j
         local integer i= 0
         local string result= ""
@@ -623,9 +623,9 @@ endfunction
             set c=SubString(value, i, i + 1)
             set j=0
             loop //for each character in escaped chars string
-                exitwhen j >= StringLength(MMD__ESCAPED_CHARS)
+                exitwhen j >= StringLength(MMD___ESCAPED_CHARS)
                 //escape control characters
-                if c == SubString(MMD__ESCAPED_CHARS, j, j + 1) then
+                if c == SubString(MMD___ESCAPED_CHARS, j, j + 1) then
                     set c="\\" + c
                     exitwhen true
                 endif
@@ -638,11 +638,11 @@ endfunction
     endfunction
    
     ///Updates the value of a defined variable for a given player
-    function MMD__update_value takes string name,player p,string op,string value,integer val_type returns nothing
+    function MMD___update_value takes string name,player p,string op,string value,integer val_type returns nothing
         local integer id= GetPlayerId(p)
         if p == null or id < 0 or id >= 12 then
             call BJDebugMsg("MMD Set Error: Invalid player. Must be P1 to P12.")
-        elseif val_type != GetStoredInteger(MMD__gc, "types", name) then
+        elseif val_type != GetStoredInteger(MMD___gc, "types", name) then
             call BJDebugMsg("MMD Set Error: Updated value of undefined variable or used value of incorrect type.")
         elseif StringLength(op) == 0 then
             call BJDebugMsg("MMD Set Error: Unrecognized operation type.")
@@ -651,26 +651,26 @@ endfunction
         elseif StringLength(name) == 0 then
             call BJDebugMsg("MMD Set Error: Variable name is empty.")
         else
-            call MMD__emit("VarP " + I2S(id) + " " + MMD__pack(name) + " " + op + " " + value)
+            call MMD___emit("VarP " + I2S(id) + " " + MMD___pack(name) + " " + op + " " + value)
         endif
     endfunction
 
     ///Defines an event's arguments and format
-    function MMD__DefineEvent takes string name,integer num_args,string format,string arg_data returns nothing
-        if GetStoredInteger(MMD__gc, "events", name) != 0 then
+    function MMD___DefineEvent takes string name,integer num_args,string format,string arg_data returns nothing
+        if GetStoredInteger(MMD___gc, "events", name) != 0 then
             call BJDebugMsg("MMD DefEvent Error: Event redefined.")
         else
-            call StoreInteger(MMD__gc, "events", name, num_args + 1)
-            call MMD__emit("DefEvent " + MMD__pack(name) + " " + I2S(num_args) + " " + arg_data + MMD__pack(format))
+            call StoreInteger(MMD___gc, "events", name, num_args + 1)
+            call MMD___emit("DefEvent " + MMD___pack(name) + " " + I2S(num_args) + " " + arg_data + MMD___pack(format))
         endif
     endfunction
    
     ///Places an event in the meta-data
-    function MMD__LogEvent takes string name,integer num_args,string data returns nothing
-        if GetStoredInteger(MMD__gc, "events", name) != num_args + 1 then
+    function MMD___LogEvent takes string name,integer num_args,string data returns nothing
+        if GetStoredInteger(MMD___gc, "events", name) != num_args + 1 then
             call BJDebugMsg("MMD LogEvent Error: Event not defined or defined with different # of args.")
         else
-            call MMD__emit("Event " + MMD__pack(name) + data)
+            call MMD___emit("Event " + MMD___pack(name) + data)
         endif
     endfunction
 
@@ -680,22 +680,22 @@ endfunction
 
     ///Sets a player flag like "win_on_leave"
     function MMD_FlagPlayer takes player p,integer flag_type returns nothing
-        local string flag= MMD__flags[flag_type]
+        local string flag= MMD___flags[flag_type]
         local integer id= GetPlayerId(p)
         if p == null or id < 0 or id >= 12 then
             call BJDebugMsg("MMD Flag Error: Invalid player. Must be P1 to P12.")
         elseif StringLength(flag) == 0 then
             call BJDebugMsg("MMD Flag Error: Unrecognized flag type.")
         elseif GetPlayerController(Player(id)) == MAP_CONTROL_USER then
-            call MMD__emit("FlagP " + I2S(id) + " " + flag)
+            call MMD___emit("FlagP " + I2S(id) + " " + flag)
         endif
     endfunction
 
     ///Defines a variable to store things in
     function MMD_DefineValue takes string name,integer value_type,integer goal_type,integer suggestion_type returns nothing
-        local string goal= MMD__goals[goal_type]
-        local string vtype= MMD__types[value_type]
-        local string stype= MMD__suggestions[suggestion_type]
+        local string goal= MMD___goals[goal_type]
+        local string vtype= MMD___types[value_type]
+        local string stype= MMD___suggestions[suggestion_type]
         if goal == null then
             call BJDebugMsg("MMD Def Error: Unrecognized goal type.")
         elseif vtype == null then
@@ -708,59 +708,59 @@ endfunction
             call BJDebugMsg("MMD Def Error: Variable name is empty.")
         elseif value_type == MMD_TYPE_STRING and goal_type != MMD_GOAL_NONE then
             call BJDebugMsg("MMD Def Error: Strings must have goal type of none.")
-        elseif GetStoredInteger(MMD__gc, "types", name) != 0 then
+        elseif GetStoredInteger(MMD___gc, "types", name) != 0 then
             call BJDebugMsg("MMD Def Error: Value redefined.")
         else
-            call StoreInteger(MMD__gc, "types", name, value_type)
-            call MMD__emit("DefVarP " + MMD__pack(name) + " " + vtype + " " + goal + " " + stype)
+            call StoreInteger(MMD___gc, "types", name, value_type)
+            call MMD___emit("DefVarP " + MMD___pack(name) + " " + vtype + " " + goal + " " + stype)
         endif
     endfunction
 
     ///Updates the value of an integer variable
     function MMD_UpdateValueInt takes string name,player p,integer op,integer value returns nothing
-        call MMD__update_value(name , p , MMD__ops[op] , I2S(value) , MMD_TYPE_INT)
+        call MMD___update_value(name , p , MMD___ops[op] , I2S(value) , MMD_TYPE_INT)
     endfunction
    
     ///Updates the value of a real variable
     function MMD_UpdateValueReal takes string name,player p,integer op,real value returns nothing
-        call MMD__update_value(name , p , MMD__ops[op] , R2S(value) , MMD_TYPE_REAL)
+        call MMD___update_value(name , p , MMD___ops[op] , R2S(value) , MMD_TYPE_REAL)
     endfunction
    
     ///Updates the value of a string variable
     function MMD_UpdateValueString takes string name,player p,string value returns nothing
         local string q= "\""
-        call MMD__update_value(name , p , MMD__ops[MMD_OP_SET] , q + MMD__pack(value) + q , MMD_TYPE_STRING)
+        call MMD___update_value(name , p , MMD___ops[MMD_OP_SET] , q + MMD___pack(value) + q , MMD_TYPE_STRING)
     endfunction   
    
     function MMD_DefineEvent0 takes string name,string format returns nothing
-        call MMD__DefineEvent(name , 0 , format , "")
+        call MMD___DefineEvent(name , 0 , format , "")
     endfunction
     function MMD_DefineEvent1 takes string name,string format,string argName0 returns nothing
-        call MMD__DefineEvent(name , 1 , format , MMD__pack(argName0) + " ")
+        call MMD___DefineEvent(name , 1 , format , MMD___pack(argName0) + " ")
     endfunction
     function MMD_DefineEvent2 takes string name,string format,string argName0,string argName1 returns nothing
-        call MMD__DefineEvent(name , 2 , format , MMD__pack(argName0) + " " + MMD__pack(argName1) + " ")
+        call MMD___DefineEvent(name , 2 , format , MMD___pack(argName0) + " " + MMD___pack(argName1) + " ")
     endfunction
     function MMD_DefineEvent3 takes string name,string format,string argName0,string argName1,string argName2 returns nothing
-        call MMD__DefineEvent(name , 3 , format , MMD__pack(argName0) + " " + MMD__pack(argName1) + " " + MMD__pack(argName2) + " ")
+        call MMD___DefineEvent(name , 3 , format , MMD___pack(argName0) + " " + MMD___pack(argName1) + " " + MMD___pack(argName2) + " ")
     endfunction
    
     function MMD_LogEvent0 takes string name returns nothing
-        call MMD__LogEvent(name , 0 , "")
+        call MMD___LogEvent(name , 0 , "")
     endfunction
     function MMD_LogEvent1 takes string name,string arg0 returns nothing
-        call MMD__LogEvent(name , 1 , " " + MMD__pack(arg0))
+        call MMD___LogEvent(name , 1 , " " + MMD___pack(arg0))
     endfunction
     function MMD_LogEvent2 takes string name,string arg0,string arg1 returns nothing
-        call MMD__LogEvent(name , 2 , " " + MMD__pack(arg0) + " " + MMD__pack(arg1))
+        call MMD___LogEvent(name , 2 , " " + MMD___pack(arg0) + " " + MMD___pack(arg1))
     endfunction
     function MMD_LogEvent3 takes string name,string arg0,string arg1,string arg2 returns nothing
-        call MMD__LogEvent(name , 3 , " " + MMD__pack(arg0) + " " + MMD__pack(arg1) + " " + MMD__pack(arg2))
+        call MMD___LogEvent(name , 3 , " " + MMD___pack(arg0) + " " + MMD___pack(arg1) + " " + MMD___pack(arg2))
     endfunction
 
     ///Emits meta-data which parsers will ignore unless they are customized to understand it
     function MMD_LogCustom takes string unique_identifier,string data returns nothing
-        call MMD__emit("custom " + MMD__pack(unique_identifier) + " " + MMD__pack(data))
+        call MMD___emit("custom " + MMD___pack(unique_identifier) + " " + MMD___pack(data))
     endfunction
 
     ///////////////////////////////////////////////////////////////
@@ -768,62 +768,62 @@ endfunction
     ///////////////////////////////////////////////////////////////
    
     ///Emits initialization data
-    function MMD__init2 takes nothing returns nothing
+    function MMD___init2 takes nothing returns nothing
         local integer i
         local trigger t
-        set MMD__initialized=true
+        set MMD___initialized=true
        
-        call MMD__emit("init version " + I2S(MMD__MINIMUM_PARSER_VERSION) + " " + I2S(MMD__CURRENT_VERSION))
+        call MMD___emit("init version " + I2S(MMD___MINIMUM_PARSER_VERSION) + " " + I2S(MMD___CURRENT_VERSION))
 
         set i=0
         loop
             exitwhen i >= 12
             if GetPlayerController(Player(i)) == MAP_CONTROL_USER and GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING then
-                call MMD__emit("init pid " + I2S(i) + " " + MMD__pack(GetPlayerName(Player(i))))
+                call MMD___emit("init pid " + I2S(i) + " " + MMD___pack(GetPlayerName(Player(i))))
             endif
             set i=i + 1
         endloop
        
         set t=CreateTrigger()
-        call TriggerAddAction(t, function MMD__tick)
+        call TriggerAddAction(t, function MMD___tick)
         call TriggerRegisterTimerEvent(t, 0.37, true)
     endfunction
    
     ///Places init2 on a timer, initializes game cache, and translates constants
-    function MMD__init takes nothing returns nothing
+    function MMD___init takes nothing returns nothing
         local trigger t= CreateTrigger()
         call TriggerRegisterTimerEvent(t, 0, false)
-        call TriggerAddAction(t, function MMD__init2)
+        call TriggerAddAction(t, function MMD___init2)
        
-        set MMD__goals[MMD_GOAL_NONE]="none"
-        set MMD__goals[MMD_GOAL_HIGH]="high"
-        set MMD__goals[MMD_GOAL_LOW]="low"
+        set MMD___goals[MMD_GOAL_NONE]="none"
+        set MMD___goals[MMD_GOAL_HIGH]="high"
+        set MMD___goals[MMD_GOAL_LOW]="low"
        
-        set MMD__types[MMD_TYPE_INT]="int"
-        set MMD__types[MMD_TYPE_REAL]="real"
-        set MMD__types[MMD_TYPE_STRING]="string"
+        set MMD___types[MMD_TYPE_INT]="int"
+        set MMD___types[MMD_TYPE_REAL]="real"
+        set MMD___types[MMD_TYPE_STRING]="string"
 
-        set MMD__suggestions[MMD_SUGGEST_NONE]="none"
-        set MMD__suggestions[MMD_SUGGEST_TRACK]="track"
-        set MMD__suggestions[MMD_SUGGEST_LEADERBOARD]="leaderboard"
+        set MMD___suggestions[MMD_SUGGEST_NONE]="none"
+        set MMD___suggestions[MMD_SUGGEST_TRACK]="track"
+        set MMD___suggestions[MMD_SUGGEST_LEADERBOARD]="leaderboard"
 
-        set MMD__ops[MMD_OP_ADD]="+="
-        set MMD__ops[MMD_OP_SUB]="-="
-        set MMD__ops[MMD_OP_SET]="="
+        set MMD___ops[MMD_OP_ADD]="+="
+        set MMD___ops[MMD_OP_SUB]="-="
+        set MMD___ops[MMD_OP_SET]="="
 
-        set MMD__flags[MMD_FLAG_DRAWER]="drawer"
-        set MMD__flags[MMD_FLAG_LOSER]="loser"
-        set MMD__flags[MMD_FLAG_WINNER]="winner"
-        set MMD__flags[MMD_FLAG_LEAVER]="leaver"
-        set MMD__flags[MMD_FLAG_PRACTICING]="practicing"
+        set MMD___flags[MMD_FLAG_DRAWER]="drawer"
+        set MMD___flags[MMD_FLAG_LOSER]="loser"
+        set MMD___flags[MMD_FLAG_WINNER]="winner"
+        set MMD___flags[MMD_FLAG_LEAVER]="leaver"
+        set MMD___flags[MMD_FLAG_PRACTICING]="practicing"
         
   
         
 
-        call FlushGameCache(InitGameCache(MMD__FILENAME))
-        set MMD__gc=InitGameCache(MMD__FILENAME)
-        call TimerStart(MMD__clock, 999999999, false, null)
-        call MMD__prepC2I()
+        call FlushGameCache(InitGameCache(MMD___FILENAME))
+        set MMD___gc=InitGameCache(MMD___FILENAME)
+        call TimerStart(MMD___clock, 999999999, false, null)
+        call MMD___prepC2I()
     endfunction
 
 //library MMD ends
@@ -833,7 +833,7 @@ endfunction
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Sun May 20 07:17:07 2018
+//   Date: Sun May 20 09:32:28 2018
 //   Map Author: DivinityX & Rich
 // 
 //===========================================================================
@@ -1338,6 +1338,55 @@ endfunction
 /// Empty slots don't count towards the player count, but computers do.
 ///////////////////////////////////////////
 // Trigger: MMDVars
+//
+// ///////////////////////////////////////////////////////////////
+// /// Notes:
+// /// All variables need to be initialized here:
+// /// using:  void DefineValue(name, type_constant, goal_constant, suggest_constant)
+// ///  for example call MMD_DefineValue("KILLS", MMD_TYPE_INT, MMD_GOAL_HIGH, MMD_SUGGEST_TRACK)
+// /// 
+// /// After initialization calls to update them can be done from anywhere:
+// /// 	void UpdateValueInt(name, player, operation_constant, value)
+// /// 	void UpdateValueReal(name, player, operation_constant, value)
+// /// 	void UpdateValueString(name, player, value)
+// /// 
+// /// For example to set the value of the previous example:
+// /// 	call MMD_UpdateValueInt("KILLS",GetTriggerPlayer(),MMD_OP_ADD, 1000) 
+// /// 		sets triggering players kills to 1000
+// ///
+// ///	You can also add and subtract by replacing MMD_OP_ADD with one of these:
+// ///		MMD_OP_ADD
+// /// 	MMD_OP_SET
+// ///////////////////////////////////////////////////////////////
+// /// ---CONSTANTS---
+// /// append MMD_ to the beginning of selected constant
+// ///
+// ///	Goal Contants:
+// /// 	GOAL_NONE
+// /// 	GOAL_HIGH
+// /// 	GOAL_LOW
+// ///
+// ///	Type Contants:
+// /// 	TYPE_STRING
+// /// 	TYPE_REAL
+// /// 	TYPE_INT
+// ///
+// ///	Suggest Constants: 
+// /// 	SUGGEST_NONE
+// /// 	SUGGEST_TRACK
+// /// 	SUGGEST_LEADERBOARD
+// /// 
+// ///////////////////////////////////////////////////////////////
+// /// We can also flag players using:
+// ///		void FlagPlayer(player, flag_constant)
+// /// existing flags:
+// ///     FLAG_DRAWER
+// ///     FLAG_LOSER
+// ///     FLAG_WINNER
+// ///     FLAG_LEAVER
+// ///     FLAG_PRACTICING
+// ///
+// ///////////////////////////////////////////////////////////////
 //===========================================================================
 function Trig_MMDVars_Actions takes nothing returns nothing
 ///////////////////////////////////////////////////////////////
@@ -5611,7 +5660,7 @@ endfunction
 function UpdateScoreboard takes nothing returns nothing
  local integer playerid= GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ()))
 	set udg_PlayerKills[playerid]=udg_PlayerKills[playerid] + 1
-    call MMD__update_value(("KILLS" ) , ( GetOwningPlayer(GetKillingUnitBJ()) ) , MMD__ops[( MMD_OP_SET )] , I2S(( udg_PlayerKills[playerid])) , MMD_TYPE_INT) // INLINED!!
+    call MMD___update_value(("KILLS" ) , ( GetOwningPlayer(GetKillingUnitBJ()) ) , MMD___ops[( MMD_OP_SET )] , I2S(( udg_PlayerKills[playerid])) , MMD_TYPE_INT) // INLINED!!
 	if ( udg_PlayerScorePosition[playerid] > 0 ) then
 		call MultiboardSetItemValueBJ(udg_Scoreboard, 2, 7 + udg_PlayerScorePosition[playerid], I2S(udg_PlayerKills[playerid]))
 	endif
@@ -6898,9 +6947,9 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs16134671")
-call ExecuteFunc("HCL__init")
-call ExecuteFunc("MMD__init")
+call ExecuteFunc("jasshelper__initstructs24255796")
+call ExecuteFunc("HCL___init")
+call ExecuteFunc("MMD___init")
 
     call InitGlobals()
     call InitCustomTriggers()
@@ -6944,19 +6993,19 @@ endfunction
 
 
 //Struct method generated initializers/callers:
-function sa__MMD__QueueNode_onDestroy takes nothing returns boolean
+function sa__MMD___QueueNode_onDestroy takes nothing returns boolean
 local integer this=f__arg_this
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this])
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this])
-            set s__MMD__QueueNode_msg[this]=null
-            set s__MMD__QueueNode_key[this]=null
-            set s__MMD__QueueNode_next[this]=0
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this])
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this])
+            set s__MMD___QueueNode_msg[this]=null
+            set s__MMD___QueueNode_key[this]=null
+            set s__MMD___QueueNode_next[this]=0
    return true
 endfunction
 
-function jasshelper__initstructs16134671 takes nothing returns nothing
-    set st__MMD__QueueNode_onDestroy=CreateTrigger()
-    call TriggerAddCondition(st__MMD__QueueNode_onDestroy,Condition( function sa__MMD__QueueNode_onDestroy))
+function jasshelper__initstructs24255796 takes nothing returns nothing
+    set st__MMD___QueueNode_onDestroy=CreateTrigger()
+    call TriggerAddCondition(st__MMD___QueueNode_onDestroy,Condition( function sa__MMD___QueueNode_onDestroy))
 
 
 endfunction
