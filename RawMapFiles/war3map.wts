@@ -17069,12 +17069,6 @@ STRING 5894
 Train King Arthur |cffffcc00(W)|r
 }
 
-STRING 5895
-// Units: e00I (Weeiz), Ubertip (Tooltip - Extended)
-{
-King Arthur can build various different towers.
-}
-
 STRING 5899
 // Units: h01J (Storm Pandaren), Ubertip (Tooltip - Extended)
 {
@@ -18120,7 +18114,7 @@ R
 }
 
 STRING 6207
-// Units: e001 (Weeiz), Ubertip (Tooltip - Extended)
+// Units: e00I (Weeiz), Ubertip (Tooltip - Extended)
 {
 An advanced high tier Hybrid Builder.
 }
@@ -18593,5 +18587,11 @@ STRING 6274
 // Abilities: A067 (Devour), Ubertip (Tooltip - Normal - Extended)
 {
 Whenever this tower kills an enemy unit it gains +1 attack damage.
+}
+
+STRING 6275
+// Units: e001 (Weeiz), Ubertip (Tooltip - Extended)
+{
+An advanced high tier Hybrid Builder.
 }
 
