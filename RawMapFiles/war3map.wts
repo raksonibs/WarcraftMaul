@@ -1,9 +1,4 @@
-﻿STRING 1
-{
-Player 1
-}
-
-STRING 3
+﻿STRING 3
 // Units: n02V (Scout), Name (Name)
 {
 Scout
@@ -43,61 +38,6 @@ STRING 48
 // Units: oC91 (Pit Lord), Hotkey (Hotkey)
 {
 P
-}
-
-STRING 50
-{
-Player 2
-}
-
-STRING 51
-{
-Player 3
-}
-
-STRING 52
-{
-Player 4
-}
-
-STRING 53
-{
-Player 5
-}
-
-STRING 54
-{
-Player 6
-}
-
-STRING 55
-{
-Player 7
-}
-
-STRING 56
-{
-Player 8
-}
-
-STRING 57
-{
-Player 9
-}
-
-STRING 88
-{
-WarCraft Maul: BotMod v3.1h
-}
-
-STRING 89
-{
-1-13
-}
-
-STRING 91
-{
-DivinityX & Rich
 }
 
 STRING 97
@@ -404,16 +344,6 @@ STRING 708
 // Units: h03Y (Big Bad Ogre), EditorSuffix (Name - Editor Suffix)
 {
 lvl 32
-}
-
-STRING 762
-{
-Towers
-}
-
-STRING 763
-{
-Runners
 }
 
 STRING 764
@@ -7238,21 +7168,6 @@ STRING 3110
 Sexy Poison
 }
 
-STRING 3120
-{
-Updates X19d
-}
-
-STRING 3121
-{
-UPDATES FROM WARCRAFT MAUL X19c
-
-Minor terrain changes to mirror the other side.
-
-The only true version is made by us, DivinityX and Rich.
-All maps not based on a DivinityX and Rich version is equal to shit.
-}
-
 STRING 3133
 // Units: h014 (PoopOnUrPorch), Ubertip (Tooltip - Extended)
 {
@@ -11489,16 +11404,6 @@ STRING 4219
 I will have revenge!!  And what better way to have revenge than taking on 18 without a care?   Air is part of this "Vengeance" plan.
 }
 
-STRING 4224
-{
-Player 10
-}
-
-STRING 4225
-{
-Player 11
-}
-
 STRING 4226
 // Units: n01T (Stag), Ubertip (Tooltip - Extended)
 {
@@ -12507,25 +12412,6 @@ STRING 4503
 Give you a totally random race of the 33 available races.
 }
 
-STRING 4538
-{
-Updates X11
-}
-
-STRING 4539
-{
-UPDATES FROM WARCRAFT MAUL X10
-
-DivinityX & Rich takes over. The previous authors were worthless.
-
-The maul actually works the way it's supposed to now.
-Thai, don't ever edit a maul again.
-
-- Repick rewritten, no abusing.
-- Leaderboard now shows current lives
-- Grey's spawn is disabled if he leaves.
-}
-
 STRING 4569
 // Units: o008 (Grom Hellscream), Hotkey (Hotkey)
 {
@@ -13066,217 +12952,10 @@ STRING 4742
 X
 }
 
-STRING 4750
-{
-|CFF00A651Easy (100%)|r
-}
-
-STRING 4751
-{
-|CFFFFCD00Medium (150%)
-}
-
-STRING 4752
-{
-|CFFFF0000Hard (200%)|r
-}
-
-STRING 4753
-{
-|CFF383838Extreme (250%)|R
-}
-
-STRING 4756
-{
-Updates X12
-}
-
-STRING 4757
-{
-UPDATES FROM WARCRAFT MAUL X11
-
-- New race selection system
-- Random race added.
-- You can only get one of each team with random.
-}
-
-STRING 4759
-{
-Updates X16
-}
-
-STRING 4760
-{
-UPDATES FROM WARCRAFT MAUL X12
-
-The only true version is made by us, DivinityX and Rich.
-All maps not based on a DivinityX and Rich version is equal to shit.
-}
-
-STRING 4785
-{
-Updates X17
-}
-
-STRING 4786
-{
-UPDATES FROM WARCRAFT MAUL X16
-
-Added hardcore random. Gives you a random race without the ability to repick and 50 extra gold.
-
-You can now open/close spawns by writing -(color), for example -orange or -grey. It will trigger a vote, if more than 65% people votes yes, the spawn will be opened/closed.
-}
-
-STRING 4788
-{
-Updates X17a
-}
-
-STRING 4789
-{
-UPDATES FROM WARCRAFT MAUL X17
-
-A critical bug was found in the X17 version. The map could not be started on battle.net.
-
-The only true version is made by us, DivinityX and Rich.
-All maps not based on a DivinityX and Rich version is equal to shit.
-}
-
-STRING 4790
-{
-Updates X17b
-}
-
-STRING 4791
-{
-UPDATES FROM WARCRAFT MAUL X17a
-
-A bug that corrupted the difficulty vote was found and fixed.
-
-The only true version is made by us, DivinityX and Rich.
-All maps not based on a DivinityX and Rich version is equal to shit.
-}
-
-STRING 4792
-{
-Updates X17c
-}
-
-STRING 4793
-{
-UPDATES FROM WARCRAFT MAUL X17b
-
-Bug caused +50 gold to fail when given SexyPplComeHere.
-
-The only true version is made by us, DivinityX and Rich.
-All maps not based on a DivinityX and Rich version is equal to shit.
-}
-
-STRING 4796
-{
-Updates X18
-}
-
-STRING 4797
-{
-UPDATES FROM WARCRAFT MAUL X17c
-
-It's fucking ridiculous that this bug can't be fixed. It is now permed 30 seconds vote time on diff vote.
-
-The only true version is made by us, DivinityX and Rich.
-All maps not based on a DivinityX and Rich version is equal to shit.
-}
-
-STRING 4798
-{
--Air levels 5/10/15/20/25/30 (Write -air for more info)
--You select a race at your race chooser building, the races all have their strengths and weaknesses, so pick one that suits your playing style.
--Once you have selected your race, build the worker at your race building
-}
-
-STRING 4814
-{
-Updates X18a
-}
-
-STRING 4815
-{
-UPDATES FROM WARCRAFT MAUL X18
-
-If a player left before he was given money, everyone lost their money.
-
-The only true version is made by us, DivinityX and Rich.
-All maps not based on a DivinityX and Rich version is equal to shit.
-}
-
-STRING 4821
-{
-Updates X19
-}
-
-STRING 4822
-{
-UPDATES FROM WARCRAFT MAUL X18a
-
-New creep move system. Air and ground has different routes to even out the differances between spawns. This is also a good way to get rid of unit groups since they cause memory leaks.
-
-Difficulty reduced because the new move system is faster.
-
-Random race now 
-}
-
-STRING 4823
-{
-Updates X19b
-}
-
-STRING 4824
-{
-UPDATES FROM WARCRAFT MAUL X19
-
-The new move system caused units > lvl 32 to not board ship. This is of course fixed now.
-
-The only true version is made by us, DivinityX and Rich.
-All maps not based on a DivinityX and Rich version is equal to shit.
-}
-
 STRING 4828
 // Units: n05Q (Dwarf King (Statue)), Hotkey (Hotkey)
 {
 X
-}
-
-STRING 4830
-{
-Updates X19c
-}
-
-STRING 4831
-{
-UPDATES FROM WARCRAFT MAUL X19b
-
-Some broken towers are now fixed. (Whoever made the new races is a complete fuckup)
-
-The only true version is made by us, DivinityX and Rich.
-All maps not based on a DivinityX and Rich version is equal to shit.
-}
-
-STRING 4833
-{
-Updates X25
-}
-
-STRING 4834
-{
-UPDATES FROM WARCRAFT MAUL X19d
-
-LelouchViBritannia, not only do you suck ass, you also mixed up the numbers. +65 gold for HC random... no, that's 50. 50% for a vote to succeed... no, that's 65%. I suggest you never touch my maps again.
-
-- Leaderboard in form of multiboard. (Yes, I am the god of triggers.)
-- Spawn indicators. Yes, finally we know what spawns are opened and closed.
-- Some fixes and improvements. Most annoying thing was the nerub prince web. Not only was it to thick to see trough, it didn't dissapear on death. My dummy-unit-link-system triggers will take care of that.
-
-Even though Rich is no longer editing with me, he deserves credit. He taught me.
 }
 
 STRING 4835
@@ -13301,57 +12980,6 @@ STRING 4896
 // Units: h006 (Phoenix Egg), Hotkey (Hotkey)
 {
 R
-}
-
-STRING 4898
-{
-Updates X25a
-}
-
-STRING 4899
-{
-UPDATES FROM WARCRAFT MAUL X25
-
-- Spawn bug fixed.
-}
-
-STRING 4900
-{
-Updates X27
-}
-
-STRING 4901
-{
-UPDATES FROM WARCRAFT MAUL X26
-
-- Added a new system to block people from building in your area.
-- Added -sellall command to sell everything left from leavers.
-- Some bugfixes
-}
-
-STRING 4902
-{
-Updates X25b
-}
-
-STRING 4903
-{
-UPDATES FROM WARCRAFT MAUL X25a
-
-- Minor changes. You won't even see the difference.
-}
-
-STRING 4904
-{
-Updates X26
-}
-
-STRING 4905
-{
-UPDATES FROM WARCRAFT MAUL X25b
-
-- Changed the leaderboard to a multiboard.
-- Spawn indicators. (Green = Opened / Red = Closed)
 }
 
 STRING 4908
@@ -13868,31 +13496,6 @@ STRING 5109
 // Abilities: A06N (Immolation), Name (Name)
 {
 Immolation
-}
-
-STRING 5139
-{
-Updates X27a
-}
-
-STRING 5140
-{
-UPDATES FROM WARCRAFT MAUL X27
-
-- Added armor type to the multiboard
-- Some bugfixes and minor tweaks.
-}
-
-STRING 5142
-{
-Updates X27b
-}
-
-STRING 5143
-{
-UPDATES FROM WARCRAFT MAUL X27a
-
-- Fixed some alignment issues with the multiboard.
 }
 
 STRING 5147
@@ -15366,16 +14969,6 @@ STRING 5517
  (Night Elf Ancients)
 }
 
-STRING 5518
-{
-Player 12
-}
-
-STRING 5519
-{
-Player 13
-}
-
 STRING 5524
 // Abilities: A02D (Sell), Ubertip (Tooltip - Normal - Extended)
 {
@@ -16845,7 +16438,6 @@ An improved version of the arrow tower that shoots lightning at nearby enemies
 |cffffcc00Damage:|r 7 - 9
 |cffffcc00Range:|r 900
 |cffffcc00Ability:|r Ricochet; attacks can bounce and hit a total of 3 enemies
-
 }
 
 STRING 5861
@@ -16871,18 +16463,6 @@ An improved version of the cannon tower that shoots balls of frost at enemies
 |cffffcc00Range:|r 700 (ground only)
 |cffffcc00Ability:|r Splash; the area of effect is 120
 |cffffcc00Ability(2):|r Frost Attack; slows attacked units movement speed by 25% for 10 seconds.
-}
-
-STRING 5864
-// Units: h04A (Corruption Tower), Ubertip (Tooltip - Extended)
-{
-An improved version of the arcane tower that shoots corrption missiles at enemies
-
-|cffffcc00Attack:|r Magic
-|cffffcc00Cooldown:|r 0.40
-|cffffcc00Damage:|r 13 - 13
-|cffffcc00Range:|r 900
-|cffffcc00Ability:|r Splash; the area of effect is 60
 }
 
 STRING 5865
@@ -17205,7 +16785,6 @@ The very first lowly worshipper is the SkittlesRainbow and we have no clue who t
 |cffffcc00Damage:|r 10 - 12
 |cffffcc00Range:|r 900
 |cffffcc00Ability:|r Bounce; attacks bounce up to 3 times
-
 }
 
 STRING 5926
@@ -17292,81 +16871,6 @@ STRING 5942
 // Abilities: A08X (Frost Attack), EditorSuffix (Editor Suffix)
 {
  (Icon)
-}
-
-STRING 5944
-{
-Visit maulbot.com for information about the latest updates, current lobby name and much more!
-}
-
-STRING 5945
-{
-|cFF7AB1DFmaulbot.com
-}
-
-STRING 5954
-{
- 
-}
-
-STRING 5955
-{
- 
-}
-
-STRING 5956
-{
- 
-}
-
-STRING 5957
-{
- 
-}
-
-STRING 5958
-{
- 
-}
-
-STRING 5959
-{
- 
-}
-
-STRING 5960
-{
- 
-}
-
-STRING 5961
-{
- 
-}
-
-STRING 5962
-{
- 
-}
-
-STRING 5963
-{
- 
-}
-
-STRING 5964
-{
- 
-}
-
-STRING 5965
-{
- 
-}
-
-STRING 5966
-{
- 
 }
 
 STRING 5967
@@ -17914,18 +17418,6 @@ A loyal knight sworn true to the human king, he will stand guard wherever you te
 |cffffcc00Cooldown:|r 0.16
 |cffffcc00Damage:|r 200 - 240
 |cffffcc00Range:|r Melee
-}
-
-STRING 6182
-// Units: h049 (Darkness Tower), Ubertip (Tooltip - Extended)
-{
-An improved version of the arcane tower that shoots dark magic at enemies
-
-|cffffcc00Attack:|r Magic
-|cffffcc00Cooldown:|r 1.00
-|cffffcc00Damage:|r 13 - 13
-|cffffcc00Range:|r 900
-|cffffcc00Ability:|r Spreading Darkness; allows the tower to shoot up to 15 enemies at the same time
 }
 
 STRING 6183
@@ -18593,5 +18085,98 @@ STRING 6275
 // Units: e001 (Weeiz), Ubertip (Tooltip - Extended)
 {
 An advanced high tier Hybrid Builder.
+}
+
+STRING 6276
+{
+WarCraft Maul: BotMod v3.2.3
+}
+
+STRING 6277
+{
+13
+}
+
+STRING 6278
+{
+runi95 & Promises
+}
+
+STRING 6279
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6280
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6281
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6282
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6283
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6284
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6285
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6286
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6287
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6288
+{
+|cFF7ab1dfmaulbot.com
+}
+
+STRING 6289
+// Units: h049 (Darkness Tower), Ubertip (Tooltip - Extended)
+{
+An improved version of the arcane tower that shoots dark magic at enemies
+
+|cffffcc00Attack:|r Magic
+|cffffcc00Cooldown:|r 1.00
+|cffffcc00Damage:|r 22- 22|cffffcc00Range:|r 900
+|cffffcc00Ability:|r Spreading Darkness; allows the tower to shoot up to 5 enemies at the same time
+}
+
+STRING 6290
+// Units: h04A (Corruption Tower), Ubertip (Tooltip - Extended)
+{
+An improved version of the arcane tower that shoots corrption missiles at enemies
+
+|cffffcc00Attack:|r Magic
+|cffffcc00Cooldown:|r 0.40
+|cffffcc00Damage:|r 33 - 33
+|cffffcc00Range:|r 900
+|cffffcc00Ability:|r Splash; the area of effect is 150
+}
+
+STRING 6291
+{
+Protectors
 }
 

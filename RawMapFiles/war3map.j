@@ -1,7 +1,8 @@
 globals
 //globals from HCL:
 constant boolean LIBRARY_HCL=true
-string HCL__command= ""
+string HCL___command= ""
+string HCL___extremeMode= "h"
 //endglobals from HCL
 //globals from MMD:
 constant boolean LIBRARY_MMD=true
@@ -26,36 +27,36 @@ constant integer MMD_FLAG_LOSER= 102
 constant integer MMD_FLAG_WINNER= 103
 constant integer MMD_FLAG_LEAVER= 104
 constant integer MMD_FLAG_PRACTICING= 105
-constant boolean MMD__SHOW_DEBUG_MESSAGES= true
+constant boolean MMD___SHOW_DEBUG_MESSAGES= true
        
-constant string MMD__chars= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+= \\!@#$%^&*()/?>.<,;:'\"{}[]|`~"
-constant integer MMD__num_chars= StringLength(MMD__chars)
-string array MMD__flags
-string array MMD__goals
-string array MMD__ops
-string array MMD__types
-string array MMD__suggestions
-boolean MMD__initialized= false
+constant string MMD___chars= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+= \\!@#$%^&*()/?>.<,;:'\"{}[]|`~"
+constant integer MMD___num_chars= StringLength(MMD___chars)
+string array MMD___flags
+string array MMD___goals
+string array MMD___ops
+string array MMD___types
+string array MMD___suggestions
+boolean MMD___initialized= false
                
-gamecache MMD__gc= null
-constant string MMD__ESCAPED_CHARS= " \\"
+gamecache MMD___gc= null
+constant string MMD___ESCAPED_CHARS= " \\"
        
-constant integer MMD__CURRENT_VERSION= 1
-constant integer MMD__MINIMUM_PARSER_VERSION= 1
-constant string MMD__FILENAME= "MMD.Dat"
-constant string MMD__M_KEY_VAL= "val:"
-constant string MMD__M_KEY_CHK= "chk:"
-constant integer MMD__NUM_SENDERS_NAIVE= 1
-constant integer MMD__NUM_SENDERS_SAFE= 3
-integer MMD__num_senders= MMD__NUM_SENDERS_NAIVE
-integer MMD__num_msg= 0
+constant integer MMD___CURRENT_VERSION= 1
+constant integer MMD___MINIMUM_PARSER_VERSION= 1
+constant string MMD___FILENAME= "MMD.Dat"
+constant string MMD___M_KEY_VAL= "val:"
+constant string MMD___M_KEY_CHK= "chk:"
+constant integer MMD___NUM_SENDERS_NAIVE= 1
+constant integer MMD___NUM_SENDERS_SAFE= 3
+integer MMD___num_senders= MMD___NUM_SENDERS_NAIVE
+integer MMD___num_msg= 0
        
-timer MMD__clock= CreateTimer()
-string array MMD__q_msg
-real array MMD__q_time
-integer array MMD__q_index
-integer MMD__q_head= 0
-integer MMD__q_tail= 0
+timer MMD___clock= CreateTimer()
+string array MMD___q_msg
+real array MMD___q_time
+integer array MMD___q_index
+integer MMD___q_head= 0
+integer MMD___q_tail= 0
 //endglobals from MMD
     // User-defined
 integer udg_spawnamount= 0
@@ -306,68 +307,71 @@ destructable gg_dest_B000_0160= null
 trigger l__library_init
 
 //JASSHelper struct globals:
-constant integer si__MMD__QueueNode=1
-integer si__MMD__QueueNode_F=0
-integer si__MMD__QueueNode_I=0
-integer array si__MMD__QueueNode_V
-real array s__MMD__QueueNode_timeout
-string array s__MMD__QueueNode_msg
-integer array s__MMD__QueueNode_checksum
-string array s__MMD__QueueNode_key
-integer array s__MMD__QueueNode_next
-trigger st__MMD__QueueNode_onDestroy
+constant integer si__MMD___QueueNode=1
+integer si__MMD___QueueNode_F=0
+integer si__MMD___QueueNode_I=0
+integer array si__MMD___QueueNode_V
+real array s__MMD___QueueNode_timeout
+string array s__MMD___QueueNode_msg
+integer array s__MMD___QueueNode_checksum
+string array s__MMD___QueueNode_key
+integer array s__MMD___QueueNode_next
+trigger st__MMD___QueueNode_onDestroy
 integer f__arg_this
 
 endglobals
 
 
-//Generated method caller for MMD__QueueNode.onDestroy
-function sc__MMD__QueueNode_onDestroy takes integer this returns nothing
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this])
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this])
-            set s__MMD__QueueNode_msg[this]=null
-            set s__MMD__QueueNode_key[this]=null
-            set s__MMD__QueueNode_next[this]=0
+//Generated method caller for MMD___QueueNode.onDestroy
+function sc__MMD___QueueNode_onDestroy takes integer this returns nothing
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this])
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this])
+            set s__MMD___QueueNode_msg[this]=null
+            set s__MMD___QueueNode_key[this]=null
+            set s__MMD___QueueNode_next[this]=0
 endfunction
 
-//Generated allocator of MMD__QueueNode
-function s__MMD__QueueNode__allocate takes nothing returns integer
- local integer this=si__MMD__QueueNode_F
+//Generated allocator of MMD___QueueNode
+function s__MMD___QueueNode__allocate takes nothing returns integer
+ local integer this=si__MMD___QueueNode_F
     if (this!=0) then
-        set si__MMD__QueueNode_F=si__MMD__QueueNode_V[this]
+        set si__MMD___QueueNode_F=si__MMD___QueueNode_V[this]
     else
-        set si__MMD__QueueNode_I=si__MMD__QueueNode_I+1
-        set this=si__MMD__QueueNode_I
+        set si__MMD___QueueNode_I=si__MMD___QueueNode_I+1
+        set this=si__MMD___QueueNode_I
     endif
     if (this>8190) then
         return 0
     endif
 
-   set s__MMD__QueueNode_next[this]= 0
-    set si__MMD__QueueNode_V[this]=-1
+   set s__MMD___QueueNode_next[this]= 0
+    set si__MMD___QueueNode_V[this]=-1
  return this
 endfunction
 
-//Generated destructor of MMD__QueueNode
-function sc__MMD__QueueNode_deallocate takes integer this returns nothing
+//Generated destructor of MMD___QueueNode
+function sc__MMD___QueueNode_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__MMD__QueueNode_V[this]!=-1) then
+    elseif (si__MMD___QueueNode_V[this]!=-1) then
         return
     endif
     set f__arg_this=this
-    call TriggerEvaluate(st__MMD__QueueNode_onDestroy)
-    set si__MMD__QueueNode_V[this]=si__MMD__QueueNode_F
-    set si__MMD__QueueNode_F=this
+    call TriggerEvaluate(st__MMD___QueueNode_onDestroy)
+    set si__MMD___QueueNode_V[this]=si__MMD___QueueNode_F
+    set si__MMD___QueueNode_F=this
 endfunction
 
 //library HCL:
     
     function HCL_GetCommandString takes nothing returns string
-        return HCL__command
+        return HCL___command
+    endfunction
+        function HCL_GetExtremeMode takes nothing returns string
+        return HCL___extremeMode
     endfunction
     
-    function HCL__init takes nothing returns nothing
+    function HCL___init takes nothing returns nothing
         local integer i
         local integer j
         local integer h
@@ -406,7 +410,7 @@ endfunction
                 set v=h / 6
                 set h=h - v * 6
                 call SetPlayerHandicap(Player(i), 0.5 + h / 10.0)
-                set HCL__command=HCL__command + SubString(chars, v, v + 1)
+                set HCL___command=HCL___command + SubString(chars, v, v + 1)
             endif
             set i=i + 1
         endloop
@@ -425,44 +429,44 @@ endfunction
    
     ///Triggered when tampering is detected. Increases the number of safeguards against tampering.
     function MMD_RaiseGuard takes string reason returns nothing
-        set MMD__num_senders=MMD__NUM_SENDERS_SAFE //increase number of players voting on each message
+        set MMD___num_senders=MMD___NUM_SENDERS_SAFE //increase number of players voting on each message
     endfunction
 
     ///Returns seconds elapsed in game time
-    function MMD__time takes nothing returns real
-        return TimerGetElapsed(MMD__clock)
+    function MMD___time takes nothing returns real
+        return TimerGetElapsed(MMD___clock)
     endfunction
    
     ///Initializes the char-to-int conversion
-    function MMD__prepC2I takes nothing returns nothing
+    function MMD___prepC2I takes nothing returns nothing
         local integer i= 0
         local string id
         loop
-            exitwhen i >= MMD__num_chars
-            set id=SubString(MMD__chars, i, i + 1)
+            exitwhen i >= MMD___num_chars
+            set id=SubString(MMD___chars, i, i + 1)
             if id == StringCase(id, true) then
                 set id=id + "U"
             endif
-            call StoreInteger(MMD__gc, "c2i", id, i)
+            call StoreInteger(MMD___gc, "c2i", id, i)
             set i=i + 1
         endloop
     endfunction
     ///Converts a character to an integer
-    function MMD__C2I takes string c returns integer
+    function MMD___C2I takes string c returns integer
         local integer i
         local string id= c
         if id == StringCase(id, true) then
             set id=id + "U"
         endif
-        set i=GetStoredInteger(MMD__gc, "c2i", id)
-        if ( i < 0 or i >= MMD__num_chars or SubString(MMD__chars, i, i + 1) != c ) and HaveStoredInteger(MMD__gc, "c2i", id) then
+        set i=GetStoredInteger(MMD___gc, "c2i", id)
+        if ( i < 0 or i >= MMD___num_chars or SubString(MMD___chars, i, i + 1) != c ) and HaveStoredInteger(MMD___gc, "c2i", id) then
             //A cheater sent a fake sync to screw with the cached values
             set i=0
             loop
-                exitwhen i >= MMD__num_chars //just a weird character
-                if c == SubString(MMD__chars, i, i + 1) then //cheating!
+                exitwhen i >= MMD___num_chars //just a weird character
+                if c == SubString(MMD___chars, i, i + 1) then //cheating!
                     call MMD_RaiseGuard("c2i poisoned")
-                    call StoreInteger(MMD__gc, "c2i", id, i)
+                    call StoreInteger(MMD___gc, "c2i", id, i)
                     exitwhen true
                 endif
                 set i=i + 1
@@ -472,69 +476,69 @@ endfunction
     endfunction
 
     ///Computes a weak hash value, hopefully secure enough for our purposes
-    function MMD__poor_hash takes string s,integer seed returns integer
+    function MMD___poor_hash takes string s,integer seed returns integer
         local integer n= StringLength(s)
         local integer m= n + seed
         local integer i= 0
         loop
             exitwhen i >= n
-            set m=m * 41 + MMD__C2I(SubString(s, i, i + 1))
+            set m=m * 41 + MMD___C2I(SubString(s, i, i + 1))
             set i=i + 1
         endloop
         return m
     endfunction
 
     ///Stores previously sent messages for tamper detection purposes
-        function s__MMD__QueueNode_create takes integer id,string msg returns integer
-            local integer this= s__MMD__QueueNode__allocate()
-            set s__MMD__QueueNode_timeout[this]=(TimerGetElapsed(MMD__clock)) + 7.0 + GetRandomReal(0, 2 + 0.1 * GetPlayerId(GetLocalPlayer())) // INLINED!!
-            set s__MMD__QueueNode_msg[this]=msg
-            set s__MMD__QueueNode_checksum[this]=MMD__poor_hash(s__MMD__QueueNode_msg[this] , id)
-            set s__MMD__QueueNode_key[this]=I2S(id)
+        function s__MMD___QueueNode_create takes integer id,string msg returns integer
+            local integer this= s__MMD___QueueNode__allocate()
+            set s__MMD___QueueNode_timeout[this]=(TimerGetElapsed(MMD___clock)) + 7.0 + GetRandomReal(0, 2 + 0.1 * GetPlayerId(GetLocalPlayer())) // INLINED!!
+            set s__MMD___QueueNode_msg[this]=msg
+            set s__MMD___QueueNode_checksum[this]=MMD___poor_hash(s__MMD___QueueNode_msg[this] , id)
+            set s__MMD___QueueNode_key[this]=I2S(id)
             return this
         endfunction
-        function s__MMD__QueueNode_onDestroy takes integer this returns nothing
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this])
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this])
-            set s__MMD__QueueNode_msg[this]=null
-            set s__MMD__QueueNode_key[this]=null
-            set s__MMD__QueueNode_next[this]=0
+        function s__MMD___QueueNode_onDestroy takes integer this returns nothing
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this])
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this])
+            set s__MMD___QueueNode_msg[this]=null
+            set s__MMD___QueueNode_key[this]=null
+            set s__MMD___QueueNode_next[this]=0
         endfunction
 
-//Generated destructor of MMD__QueueNode
-function s__MMD__QueueNode_deallocate takes integer this returns nothing
+//Generated destructor of MMD___QueueNode
+function s__MMD___QueueNode_deallocate takes integer this returns nothing
     if this==null then
         return
-    elseif (si__MMD__QueueNode_V[this]!=-1) then
+    elseif (si__MMD___QueueNode_V[this]!=-1) then
         return
     endif
-    call s__MMD__QueueNode_onDestroy(this)
-    set si__MMD__QueueNode_V[this]=si__MMD__QueueNode_F
-    set si__MMD__QueueNode_F=this
+    call s__MMD___QueueNode_onDestroy(this)
+    set si__MMD___QueueNode_V[this]=si__MMD___QueueNode_F
+    set si__MMD___QueueNode_F=this
 endfunction
-        function s__MMD__QueueNode_send takes integer this returns nothing
-            call StoreInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this], s__MMD__QueueNode_checksum[this])
-            call StoreInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this], s__MMD__QueueNode_checksum[this])
-            call SyncStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this])
-            call SyncStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this])
+        function s__MMD___QueueNode_send takes integer this returns nothing
+            call StoreInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this], s__MMD___QueueNode_checksum[this])
+            call StoreInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this], s__MMD___QueueNode_checksum[this])
+            call SyncStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this])
+            call SyncStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this])
         endfunction
    
     ///Returns true for a fixed size uniform random subset of players in the game
-    function MMD__isEmitter takes nothing returns boolean
+    function MMD___isEmitter takes nothing returns boolean
         local integer i= 0
         local integer n= 0
         local integer r
         local integer array picks
         local boolean array pick_flags
         loop
-            exitwhen i >= 12
+            exitwhen i >= 24
             if GetPlayerController(Player(i)) == MAP_CONTROL_USER and GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING then
-                if n < MMD__num_senders then //initializing picks
+                if n < MMD___num_senders then //initializing picks
                     set picks[n]=i
                     set pick_flags[i]=true
                 else //maintain the invariant 'P(being picked) = c/n'
                     set r=GetRandomInt(0, n)
-                    if r < MMD__num_senders then
+                    if r < MMD___num_senders then
                         set pick_flags[picks[r]]=false
                         set picks[r]=i
                         set pick_flags[i]=true
@@ -548,72 +552,72 @@ endfunction
     endfunction
    
     ///Places meta-data in the replay and in network traffic
-    function MMD__emit takes string message returns nothing
+    function MMD___emit takes string message returns nothing
         local integer q
-        if not MMD__initialized then
+        if not MMD___initialized then
             call BJDebugMsg("MMD Emit Error: Library not initialized yet.")
             return
         endif
        
         //remember sent messages for tamper check
-        set q=s__MMD__QueueNode_create(MMD__num_msg , message)
-        if MMD__q_head == 0 then
-            set MMD__q_head=q
+        set q=s__MMD___QueueNode_create(MMD___num_msg , message)
+        if MMD___q_head == 0 then
+            set MMD___q_head=q
         else
-            set s__MMD__QueueNode_next[MMD__q_tail]=q
+            set s__MMD___QueueNode_next[MMD___q_tail]=q
         endif
-        set MMD__q_tail=q
+        set MMD___q_tail=q
                
         //send new message
-        set MMD__num_msg=MMD__num_msg + 1
-        if MMD__isEmitter() then
-            call s__MMD__QueueNode_send(q)
+        set MMD___num_msg=MMD___num_msg + 1
+        if MMD___isEmitter() then
+            call s__MMD___QueueNode_send(q)
         endif
     endfunction
 
     ///Performs tamper checks
-    function MMD__tick takes nothing returns nothing
+    function MMD___tick takes nothing returns nothing
         local integer q
         local integer i
        
         //check previously sent messages for tampering
-        set q=MMD__q_head
+        set q=MMD___q_head
         loop
-            exitwhen q == 0 or s__MMD__QueueNode_timeout[q] >= (TimerGetElapsed(MMD__clock)) // INLINED!!
-            if not HaveStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[q], s__MMD__QueueNode_msg[q]) then
+            exitwhen q == 0 or s__MMD___QueueNode_timeout[q] >= (TimerGetElapsed(MMD___clock)) // INLINED!!
+            if not HaveStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[q], s__MMD___QueueNode_msg[q]) then
                 call MMD_RaiseGuard("message skipping")
-                call s__MMD__QueueNode_send(q)
-            elseif not HaveStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[q], s__MMD__QueueNode_key[q]) then
+                call s__MMD___QueueNode_send(q)
+            elseif not HaveStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[q], s__MMD___QueueNode_key[q]) then
                 call MMD_RaiseGuard("checksum skipping")
-                call s__MMD__QueueNode_send(q)
-            elseif GetStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[q], s__MMD__QueueNode_msg[q]) != s__MMD__QueueNode_checksum[q] then
+                call s__MMD___QueueNode_send(q)
+            elseif GetStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[q], s__MMD___QueueNode_msg[q]) != s__MMD___QueueNode_checksum[q] then
                 call MMD_RaiseGuard("message tampering")
-                call s__MMD__QueueNode_send(q)
-            elseif GetStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[q], s__MMD__QueueNode_key[q]) != s__MMD__QueueNode_checksum[q] then
+                call s__MMD___QueueNode_send(q)
+            elseif GetStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[q], s__MMD___QueueNode_key[q]) != s__MMD___QueueNode_checksum[q] then
                 call MMD_RaiseGuard("checksum tampering")
-                call s__MMD__QueueNode_send(q)
+                call s__MMD___QueueNode_send(q)
             endif
-            set MMD__q_head=s__MMD__QueueNode_next[q]
-            call s__MMD__QueueNode_deallocate(q)
-            set q=MMD__q_head
+            set MMD___q_head=s__MMD___QueueNode_next[q]
+            call s__MMD___QueueNode_deallocate(q)
+            set q=MMD___q_head
         endloop
-        if MMD__q_head == 0 then
-            set MMD__q_tail=0
+        if MMD___q_head == 0 then
+            set MMD___q_tail=0
         endif
        
         //check for future message tampering
         set i=0
         loop
-            exitwhen not HaveStoredInteger(MMD__gc, MMD__M_KEY_CHK + I2S(MMD__num_msg), I2S(MMD__num_msg))
+            exitwhen not HaveStoredInteger(MMD___gc, MMD___M_KEY_CHK + I2S(MMD___num_msg), I2S(MMD___num_msg))
             call MMD_RaiseGuard("message insertion")
-            call MMD__emit("Blank")
+            call MMD___emit("Blank")
             set i=i + 1
             exitwhen i >= 10
         endloop
     endfunction
    
     ///Replaces control characters with escape sequences
-    function MMD__pack takes string value returns string
+    function MMD___pack takes string value returns string
         local integer j
         local integer i= 0
         local string result= ""
@@ -623,9 +627,9 @@ endfunction
             set c=SubString(value, i, i + 1)
             set j=0
             loop //for each character in escaped chars string
-                exitwhen j >= StringLength(MMD__ESCAPED_CHARS)
+                exitwhen j >= StringLength(MMD___ESCAPED_CHARS)
                 //escape control characters
-                if c == SubString(MMD__ESCAPED_CHARS, j, j + 1) then
+                if c == SubString(MMD___ESCAPED_CHARS, j, j + 1) then
                     set c="\\" + c
                     exitwhen true
                 endif
@@ -638,11 +642,11 @@ endfunction
     endfunction
    
     ///Updates the value of a defined variable for a given player
-    function MMD__update_value takes string name,player p,string op,string value,integer val_type returns nothing
+    function MMD___update_value takes string name,player p,string op,string value,integer val_type returns nothing
         local integer id= GetPlayerId(p)
-        if p == null or id < 0 or id >= 12 then
-            call BJDebugMsg("MMD Set Error: Invalid player. Must be P1 to P12.")
-        elseif val_type != GetStoredInteger(MMD__gc, "types", name) then
+        if p == null or id < 0 or id >= 24 then
+            call BJDebugMsg("MMD Set Error: Invalid player. Must be P1 to P24.")
+        elseif val_type != GetStoredInteger(MMD___gc, "types", name) then
             call BJDebugMsg("MMD Set Error: Updated value of undefined variable or used value of incorrect type.")
         elseif StringLength(op) == 0 then
             call BJDebugMsg("MMD Set Error: Unrecognized operation type.")
@@ -651,26 +655,26 @@ endfunction
         elseif StringLength(name) == 0 then
             call BJDebugMsg("MMD Set Error: Variable name is empty.")
         else
-            call MMD__emit("VarP " + I2S(id) + " " + MMD__pack(name) + " " + op + " " + value)
+            call MMD___emit("VarP " + I2S(id) + " " + MMD___pack(name) + " " + op + " " + value)
         endif
     endfunction
 
     ///Defines an event's arguments and format
-    function MMD__DefineEvent takes string name,integer num_args,string format,string arg_data returns nothing
-        if GetStoredInteger(MMD__gc, "events", name) != 0 then
+    function MMD___DefineEvent takes string name,integer num_args,string format,string arg_data returns nothing
+        if GetStoredInteger(MMD___gc, "events", name) != 0 then
             call BJDebugMsg("MMD DefEvent Error: Event redefined.")
         else
-            call StoreInteger(MMD__gc, "events", name, num_args + 1)
-            call MMD__emit("DefEvent " + MMD__pack(name) + " " + I2S(num_args) + " " + arg_data + MMD__pack(format))
+            call StoreInteger(MMD___gc, "events", name, num_args + 1)
+            call MMD___emit("DefEvent " + MMD___pack(name) + " " + I2S(num_args) + " " + arg_data + MMD___pack(format))
         endif
     endfunction
    
     ///Places an event in the meta-data
-    function MMD__LogEvent takes string name,integer num_args,string data returns nothing
-        if GetStoredInteger(MMD__gc, "events", name) != num_args + 1 then
+    function MMD___LogEvent takes string name,integer num_args,string data returns nothing
+        if GetStoredInteger(MMD___gc, "events", name) != num_args + 1 then
             call BJDebugMsg("MMD LogEvent Error: Event not defined or defined with different # of args.")
         else
-            call MMD__emit("Event " + MMD__pack(name) + data)
+            call MMD___emit("Event " + MMD___pack(name) + data)
         endif
     endfunction
 
@@ -680,22 +684,22 @@ endfunction
 
     ///Sets a player flag like "win_on_leave"
     function MMD_FlagPlayer takes player p,integer flag_type returns nothing
-        local string flag= MMD__flags[flag_type]
+        local string flag= MMD___flags[flag_type]
         local integer id= GetPlayerId(p)
-        if p == null or id < 0 or id >= 12 then
-            call BJDebugMsg("MMD Flag Error: Invalid player. Must be P1 to P12.")
+        if p == null or id < 0 or id >= 24 then
+            call BJDebugMsg("MMD Flag Error: Invalid player. Must be P1 to P24.")
         elseif StringLength(flag) == 0 then
             call BJDebugMsg("MMD Flag Error: Unrecognized flag type.")
         elseif GetPlayerController(Player(id)) == MAP_CONTROL_USER then
-            call MMD__emit("FlagP " + I2S(id) + " " + flag)
+            call MMD___emit("FlagP " + I2S(id) + " " + flag)
         endif
     endfunction
 
     ///Defines a variable to store things in
     function MMD_DefineValue takes string name,integer value_type,integer goal_type,integer suggestion_type returns nothing
-        local string goal= MMD__goals[goal_type]
-        local string vtype= MMD__types[value_type]
-        local string stype= MMD__suggestions[suggestion_type]
+        local string goal= MMD___goals[goal_type]
+        local string vtype= MMD___types[value_type]
+        local string stype= MMD___suggestions[suggestion_type]
         if goal == null then
             call BJDebugMsg("MMD Def Error: Unrecognized goal type.")
         elseif vtype == null then
@@ -708,59 +712,59 @@ endfunction
             call BJDebugMsg("MMD Def Error: Variable name is empty.")
         elseif value_type == MMD_TYPE_STRING and goal_type != MMD_GOAL_NONE then
             call BJDebugMsg("MMD Def Error: Strings must have goal type of none.")
-        elseif GetStoredInteger(MMD__gc, "types", name) != 0 then
+        elseif GetStoredInteger(MMD___gc, "types", name) != 0 then
             call BJDebugMsg("MMD Def Error: Value redefined.")
         else
-            call StoreInteger(MMD__gc, "types", name, value_type)
-            call MMD__emit("DefVarP " + MMD__pack(name) + " " + vtype + " " + goal + " " + stype)
+            call StoreInteger(MMD___gc, "types", name, value_type)
+            call MMD___emit("DefVarP " + MMD___pack(name) + " " + vtype + " " + goal + " " + stype)
         endif
     endfunction
 
     ///Updates the value of an integer variable
     function MMD_UpdateValueInt takes string name,player p,integer op,integer value returns nothing
-        call MMD__update_value(name , p , MMD__ops[op] , I2S(value) , MMD_TYPE_INT)
+        call MMD___update_value(name , p , MMD___ops[op] , I2S(value) , MMD_TYPE_INT)
     endfunction
    
     ///Updates the value of a real variable
     function MMD_UpdateValueReal takes string name,player p,integer op,real value returns nothing
-        call MMD__update_value(name , p , MMD__ops[op] , R2S(value) , MMD_TYPE_REAL)
+        call MMD___update_value(name , p , MMD___ops[op] , R2S(value) , MMD_TYPE_REAL)
     endfunction
    
     ///Updates the value of a string variable
     function MMD_UpdateValueString takes string name,player p,string value returns nothing
         local string q= "\""
-        call MMD__update_value(name , p , MMD__ops[MMD_OP_SET] , q + MMD__pack(value) + q , MMD_TYPE_STRING)
+        call MMD___update_value(name , p , MMD___ops[MMD_OP_SET] , q + MMD___pack(value) + q , MMD_TYPE_STRING)
     endfunction   
    
     function MMD_DefineEvent0 takes string name,string format returns nothing
-        call MMD__DefineEvent(name , 0 , format , "")
+        call MMD___DefineEvent(name , 0 , format , "")
     endfunction
     function MMD_DefineEvent1 takes string name,string format,string argName0 returns nothing
-        call MMD__DefineEvent(name , 1 , format , MMD__pack(argName0) + " ")
+        call MMD___DefineEvent(name , 1 , format , MMD___pack(argName0) + " ")
     endfunction
     function MMD_DefineEvent2 takes string name,string format,string argName0,string argName1 returns nothing
-        call MMD__DefineEvent(name , 2 , format , MMD__pack(argName0) + " " + MMD__pack(argName1) + " ")
+        call MMD___DefineEvent(name , 2 , format , MMD___pack(argName0) + " " + MMD___pack(argName1) + " ")
     endfunction
     function MMD_DefineEvent3 takes string name,string format,string argName0,string argName1,string argName2 returns nothing
-        call MMD__DefineEvent(name , 3 , format , MMD__pack(argName0) + " " + MMD__pack(argName1) + " " + MMD__pack(argName2) + " ")
+        call MMD___DefineEvent(name , 3 , format , MMD___pack(argName0) + " " + MMD___pack(argName1) + " " + MMD___pack(argName2) + " ")
     endfunction
    
     function MMD_LogEvent0 takes string name returns nothing
-        call MMD__LogEvent(name , 0 , "")
+        call MMD___LogEvent(name , 0 , "")
     endfunction
     function MMD_LogEvent1 takes string name,string arg0 returns nothing
-        call MMD__LogEvent(name , 1 , " " + MMD__pack(arg0))
+        call MMD___LogEvent(name , 1 , " " + MMD___pack(arg0))
     endfunction
     function MMD_LogEvent2 takes string name,string arg0,string arg1 returns nothing
-        call MMD__LogEvent(name , 2 , " " + MMD__pack(arg0) + " " + MMD__pack(arg1))
+        call MMD___LogEvent(name , 2 , " " + MMD___pack(arg0) + " " + MMD___pack(arg1))
     endfunction
     function MMD_LogEvent3 takes string name,string arg0,string arg1,string arg2 returns nothing
-        call MMD__LogEvent(name , 3 , " " + MMD__pack(arg0) + " " + MMD__pack(arg1) + " " + MMD__pack(arg2))
+        call MMD___LogEvent(name , 3 , " " + MMD___pack(arg0) + " " + MMD___pack(arg1) + " " + MMD___pack(arg2))
     endfunction
 
     ///Emits meta-data which parsers will ignore unless they are customized to understand it
     function MMD_LogCustom takes string unique_identifier,string data returns nothing
-        call MMD__emit("custom " + MMD__pack(unique_identifier) + " " + MMD__pack(data))
+        call MMD___emit("custom " + MMD___pack(unique_identifier) + " " + MMD___pack(data))
     endfunction
 
     ///////////////////////////////////////////////////////////////
@@ -768,73 +772,73 @@ endfunction
     ///////////////////////////////////////////////////////////////
    
     ///Emits initialization data
-    function MMD__init2 takes nothing returns nothing
+    function MMD___init2 takes nothing returns nothing
         local integer i
         local trigger t
-        set MMD__initialized=true
+        set MMD___initialized=true
        
-        call MMD__emit("init version " + I2S(MMD__MINIMUM_PARSER_VERSION) + " " + I2S(MMD__CURRENT_VERSION))
+        call MMD___emit("init version " + I2S(MMD___MINIMUM_PARSER_VERSION) + " " + I2S(MMD___CURRENT_VERSION))
 
         set i=0
         loop
-            exitwhen i >= 12
+            exitwhen i >= 24
             if GetPlayerController(Player(i)) == MAP_CONTROL_USER and GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING then
-                call MMD__emit("init pid " + I2S(i) + " " + MMD__pack(GetPlayerName(Player(i))))
+                call MMD___emit("init pid " + I2S(i) + " " + MMD___pack(GetPlayerName(Player(i))))
             endif
             set i=i + 1
         endloop
        
         set t=CreateTrigger()
-        call TriggerAddAction(t, function MMD__tick)
+        call TriggerAddAction(t, function MMD___tick)
         call TriggerRegisterTimerEvent(t, 0.37, true)
     endfunction
    
     ///Places init2 on a timer, initializes game cache, and translates constants
-    function MMD__init takes nothing returns nothing
+    function MMD___init takes nothing returns nothing
         local trigger t= CreateTrigger()
         call TriggerRegisterTimerEvent(t, 0, false)
-        call TriggerAddAction(t, function MMD__init2)
+        call TriggerAddAction(t, function MMD___init2)
        
-        set MMD__goals[MMD_GOAL_NONE]="none"
-        set MMD__goals[MMD_GOAL_HIGH]="high"
-        set MMD__goals[MMD_GOAL_LOW]="low"
+        set MMD___goals[MMD_GOAL_NONE]="none"
+        set MMD___goals[MMD_GOAL_HIGH]="high"
+        set MMD___goals[MMD_GOAL_LOW]="low"
        
-        set MMD__types[MMD_TYPE_INT]="int"
-        set MMD__types[MMD_TYPE_REAL]="real"
-        set MMD__types[MMD_TYPE_STRING]="string"
+        set MMD___types[MMD_TYPE_INT]="int"
+        set MMD___types[MMD_TYPE_REAL]="real"
+        set MMD___types[MMD_TYPE_STRING]="string"
 
-        set MMD__suggestions[MMD_SUGGEST_NONE]="none"
-        set MMD__suggestions[MMD_SUGGEST_TRACK]="track"
-        set MMD__suggestions[MMD_SUGGEST_LEADERBOARD]="leaderboard"
+        set MMD___suggestions[MMD_SUGGEST_NONE]="none"
+        set MMD___suggestions[MMD_SUGGEST_TRACK]="track"
+        set MMD___suggestions[MMD_SUGGEST_LEADERBOARD]="leaderboard"
 
-        set MMD__ops[MMD_OP_ADD]="+="
-        set MMD__ops[MMD_OP_SUB]="-="
-        set MMD__ops[MMD_OP_SET]="="
+        set MMD___ops[MMD_OP_ADD]="+="
+        set MMD___ops[MMD_OP_SUB]="-="
+        set MMD___ops[MMD_OP_SET]="="
 
-        set MMD__flags[MMD_FLAG_DRAWER]="drawer"
-        set MMD__flags[MMD_FLAG_LOSER]="loser"
-        set MMD__flags[MMD_FLAG_WINNER]="winner"
-        set MMD__flags[MMD_FLAG_LEAVER]="leaver"
-        set MMD__flags[MMD_FLAG_PRACTICING]="practicing"
+        set MMD___flags[MMD_FLAG_DRAWER]="drawer"
+        set MMD___flags[MMD_FLAG_LOSER]="loser"
+        set MMD___flags[MMD_FLAG_WINNER]="winner"
+        set MMD___flags[MMD_FLAG_LEAVER]="leaver"
+        set MMD___flags[MMD_FLAG_PRACTICING]="practicing"
         
   
         
 
-        call FlushGameCache(InitGameCache(MMD__FILENAME))
-        set MMD__gc=InitGameCache(MMD__FILENAME)
-        call TimerStart(MMD__clock, 999999999, false, null)
-        call MMD__prepC2I()
+        call FlushGameCache(InitGameCache(MMD___FILENAME))
+        set MMD___gc=InitGameCache(MMD___FILENAME)
+        call TimerStart(MMD___clock, 999999999, false, null)
+        call MMD___prepC2I()
     endfunction
 
 //library MMD ends
 //===========================================================================
 // 
-// WarCraft Maul: BotMod v3.1h
+// WarCraft Maul: BotMod v3.2.3
 // 
 //   Warcraft III map script
 //   Generated by the Warcraft III World Editor
-//   Date: Wed May 23 17:01:14 2018
-//   Map Author: DivinityX & Rich
+//   Date: Fri May 25 15:21:40 2018
+//   Map Author: runi95 & Promises
 // 
 //===========================================================================
 
@@ -1578,12 +1582,15 @@ function VoteTimerExpired takes nothing returns nothing
 				set udg_GreyFelhound01=CreateUnit(Player(8), 'h03U', - 896.0, - 3840.0, 270.000)
 				set udg_GreyFelhound02=CreateUnit(Player(8), 'h03U', 896.0, - 3840.0, 270.000)
 			endif
-			if ( udg_reals02[GetForLoopIndexA()] == 0.00 ) then
-				call DialogDisplayBJ(false, udg_dialog01, ConvertedPlayer(GetForLoopIndexA()))
-				call DisplayTextToForce(GetPlayersAll(), udg_PlayerColorCodes[GetForLoopIndexA()] + GetPlayerName(ConvertedPlayer(GetForLoopIndexA())) + "|r did not vote, their vote will not be counted")
-			else
-				set votingplayers=votingplayers + 1
-			endif
+            if ( (HCL___command) == (HCL___extremeMode) ) then // INLINED!!
+            else
+                if ( udg_reals02[GetForLoopIndexA()] == 0.00 ) then
+                    call DialogDisplayBJ(false, udg_dialog01, ConvertedPlayer(GetForLoopIndexA()))
+                    call DisplayTextToForce(GetPlayersAll(), udg_PlayerColorCodes[GetForLoopIndexA()] + GetPlayerName(ConvertedPlayer(GetForLoopIndexA())) + "|r did not vote, their vote will not be counted")
+                else
+                    set votingplayers=votingplayers + 1
+                endif
+            endif
 			set udg_real01=udg_real01 + udg_reals02[GetForLoopIndexA()]
 		else
 		endif
@@ -1591,13 +1598,17 @@ function VoteTimerExpired takes nothing returns nothing
 	endloop
 	
 	call InitializeScoreboard()
-
-	if ( votingplayers == 0 ) then
-		call DisplayTextToForce(GetPlayersAll(), "Nobody voted, difficulty will automaticall be set to Easy")
-		set udg_real02=100.0
-	else
-		set udg_real02=udg_real01 / I2R(votingplayers)
-	endif
+    if ( (HCL___command) == (HCL___extremeMode) ) then // INLINED!!
+        call DisplayTextToForce(GetPlayersAll(), "Extreme mode activated, difficulty will automaticall be set to Extreme")
+        set udg_real02=250.0
+    else
+        if ( votingplayers == 0 ) then
+            call DisplayTextToForce(GetPlayersAll(), "Nobody voted, difficulty will automaticall be set to Easy")
+            set udg_real02=100.0
+        else
+            set udg_real02=udg_real01 / I2R(votingplayers)
+        endif
+    endif
 	set udg_integer13=R2I(( ( ( udg_real02 - 50.00 ) / 50.00 ) + ModuloReal(( ( udg_real02 - 50.00 ) / 50.00 ), 1.00) ))
 	call SetPlayerHandicapBJ(Player(13), udg_real02)
 	call SetPlayerHandicapBJ(Player(14), udg_real02)
@@ -1606,12 +1617,18 @@ function VoteTimerExpired takes nothing returns nothing
 	call DisplayTextToForce(GetPlayersAll(), ( "Difficulty was set to " + ( udg_strings03[udg_integer13] + ( " (" + ( I2S(R2I(udg_real02)) + "%)." ) ) ) ))
 	if ( udg_real02 >= 250 ) then
 		call PlaySoundBJ(udg_ImpossibleDifficultySound)
-		call DisplayTextToForce(GetPlayersAll(), "|cFF565656Everyone voted for Extreme, you will only have |r1|cFF565656 life!|r")
+        if ( votingplayers == 0 ) then
+            call DisplayTextToForce(GetPlayersAll(), "|cFF565656Mode set to Extreme, you will only have |r1|cFF565656 life!|r")
+        else
+            call DisplayTextToForce(GetPlayersAll(), "|cFF565656Everyone voted for Extreme, you will only have |r1|cFF565656 life!|r")
+        endif
+
+
 		set udg_TotalLives=1
 		call MultiboardSetItemValueBJ(udg_Scoreboard, 2, 4, I2S(udg_TotalLives))
 	endif
 	
-	call MultiboardSetItemValueBJ(udg_Scoreboard, 2, 3, udg_strings03[udg_integer13])
+	call MultiboardSetItemValueBJ(udg_Scoreboard, 2, 3, ( ( I2S(R2I(udg_real02)) + "%" ) + ( " (" + ( udg_strings03[udg_integer13] + ")" ) ) ))
 	//call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(),2,5,(udg_strings03[udg_integer13]+(" ("+(I2S(R2I(udg_real02))+"%)"))))
 	//call MultiboardSetItemWidthBJ(GetLastCreatedMultiboard(),1,5,udg_reals06[udg_integer13])
 	//call MultiboardSetItemWidthBJ(GetLastCreatedMultiboard(),2,5,udg_reals07[udg_integer13])
@@ -1623,7 +1640,11 @@ endfunction
 
 function InitializeVoteTimer takes nothing returns nothing
  local timer t=CreateTimer()
-	call TimerStart(t, 10.00, false, function VoteTimerExpired)
+    if ( (HCL___command) == (HCL___extremeMode) ) then // INLINED!!
+        call TimerStart(t, 3.00, false, function VoteTimerExpired)
+    else
+        call TimerStart(t, 10.00, false, function VoteTimerExpired)
+    endif
 	set t=null
 endfunction
 
@@ -1650,10 +1671,10 @@ function InitializeVotes takes nothing returns nothing
 	set udg_strings03[3]="|cFFFF0000Hard|r"
 	set udg_strings03[4]="|cFF383838Extreme|r"
 	call DialogSetMessageBJ(udg_dialog01, "Difficulty vote:")
-	set udg_buttons01[1]=DialogAddButtonBJ(udg_dialog01, "TRIGSTR_4750")
-	set udg_buttons01[2]=DialogAddButtonBJ(udg_dialog01, "TRIGSTR_4751")
-	set udg_buttons01[3]=DialogAddButtonBJ(udg_dialog01, "TRIGSTR_4752")
-	set udg_buttons01[4]=DialogAddButtonBJ(udg_dialog01, "TRIGSTR_4753")
+	set udg_buttons01[1]=DialogAddButtonBJ(udg_dialog01, udg_strings03[1])
+	set udg_buttons01[2]=DialogAddButtonBJ(udg_dialog01, udg_strings03[2])
+	set udg_buttons01[3]=DialogAddButtonBJ(udg_dialog01, udg_strings03[3])
+	set udg_buttons01[4]=DialogAddButtonBJ(udg_dialog01, udg_strings03[4])
 
 	call CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), 'h03Q', - 1920.0, 3000.0, 0.0)
 	call CreateUnit(Player(PLAYER_NEUTRAL_PASSIVE), 'h00H', - 1920.0, 2624.0, 0.0)
@@ -1663,7 +1684,28 @@ function InitializeVotes takes nothing returns nothing
 
 	set bj_forLoopAIndex=1
 	set bj_forLoopAIndexEnd=13
-	loop
+    //set command = HCL_GetCommandString()
+    if ( (HCL___command) == (HCL___extremeMode) ) then // INLINED!!
+    loop
+		exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
+		if ( GetPlayerSlotState(ConvertedPlayer(GetForLoopIndexA())) == PLAYER_SLOT_STATE_PLAYING ) then
+			set udg_integer07=( udg_integer07 + 1 )
+			set udg_IsSpawnOpen[GetForLoopIndexA()]=1
+			call PanCameraToTimedLocForPlayer(ConvertedPlayer(GetForLoopIndexA()), loc, 0)
+			//call DialogDisplayBJ(true,udg_dialog01,ConvertedPlayer(GetForLoopIndexA()))
+			set udg_booleans01[GetForLoopIndexA()]=true
+			call CreateUnit(ConvertedPlayer(GetForLoopIndexA()), 'e00C', - 1920.0, 3000.0, 0.0)
+			call CreateUnit(ConvertedPlayer(GetForLoopIndexA()), 'e00C', - 1920.0, 2624.0, 0.0)
+			call CreateUnit(ConvertedPlayer(GetForLoopIndexA()), 'e00C', - 1920.0, 2240.0, 0.0)
+			call CreateUnit(ConvertedPlayer(GetForLoopIndexA()), 'e00C', - 1920.0, 1856.0, 0.0)
+			call CreateUnit(ConvertedPlayer(GetForLoopIndexA()), 'e00C', - 1920.0, 1472.0, 0.0)
+		else
+			set udg_IsSpawnOpen[GetForLoopIndexA()]=0
+		endif
+		set bj_forLoopAIndex=bj_forLoopAIndex + 1
+	endloop
+    else
+    loop
 		exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
 		if ( GetPlayerSlotState(ConvertedPlayer(GetForLoopIndexA())) == PLAYER_SLOT_STATE_PLAYING ) then
 			set udg_integer07=( udg_integer07 + 1 )
@@ -1681,6 +1723,8 @@ function InitializeVotes takes nothing returns nothing
 		endif
 		set bj_forLoopAIndex=bj_forLoopAIndex + 1
 	endloop
+    endif
+	
 	call RemoveLocation(loc)
 	set loc=null
 	call InitializeVoteTimer()
@@ -3381,124 +3425,78 @@ function InitializeTowerTierArrays takes nothing returns nothing
 	set udg_TierOneTowers[6]='h00U' // Scorpion (10)
 	set udg_TierOneTowers[7]='o003' // Chaos Grunt (10)
 	set udg_TierOneTowers[8]='o009' // High Elf Swordsman (10)
-	set udg_TierOneTowers[9]='oC24' // Mur'Gul Reaver (10)
-	set udg_TierOneTowers[10]='oC14' // Sasquatch (10)
-	set udg_TierOneTowers[11]='e00E' // Archer (10)
-	set udg_TierOneTowers[12]='h01C' // Centaur Outrunner (8)
-	set udg_TierOneTowers[13]='n009' // Corrupted Moon Well (10)
-	set udg_TierOneTowers[14]='n00U' // Human Frigate (10)
-	set udg_TierOneTowers[15]='n031' // Angel Warrior (8)
-	set udg_TierOneTowers[16]='n03X' // Dark Troll (10)
-	set udg_TierOneTowers[17]='n02T' // FootBlade (10)
-	set udg_TierOneTowers[18]='n03D' // Forest Troll (8)
-	set udg_TierOneTowers[19]='n055' // French Soldier (7)
-	set udg_TierOneTowers[20]='n047' // Ghoul (8)
-	set udg_TierOneTowers[21]='n029' // Gnoll (7)
-	set udg_TierOneTowers[22]='n032' // Hydra Hatchling (15)
-	set udg_TierOneTowers[23]='n03N' // Ice Troll (8)
-	set udg_TierOneTowers[24]='n01Y' // MAZE ME PLOX (3)
-	set udg_TierOneTowers[25]='n04K' // Mild-Mannered Chris (10)
-	set udg_TierOneTowers[26]='n05H' // Undead Dwarf (5)
-	set udg_TierOneTowers[27]='h02H' // Marine (10)
-	set udg_TierOneTowers[28]='h01P' // Minature Mecha Goblin (10)
-	set udg_TierOneTowers[29]='h012' // SkittlesRainbow (7)
-	set udg_TierOneTowers[30]='h01Z' // Spirit Wolf (8)
-	set udg_TierOneTowers[31]='n00A' // Draenei Guardian
+	set udg_TierOneTowers[9]='oC14' // Sasquatch (10)
+	set udg_TierOneTowers[10]='e00E' // Archer (10)
+	set udg_TierOneTowers[11]='h01C' // Centaur Outrunner (8)
+	set udg_TierOneTowers[12]='n009' // Corrupted Moon Well (10)
+	set udg_TierOneTowers[13]='n00U' // Human Frigate (10)
+	set udg_TierOneTowers[14]='n031' // Angel Warrior (8)
+	set udg_TierOneTowers[15]='n03X' // Dark Troll (10)
+	set udg_TierOneTowers[16]='n02T' // FootBlade (10)
+	set udg_TierOneTowers[17]='n03D' // Forest Troll (8)
+	set udg_TierOneTowers[18]='n055' // French Soldier (7)
+	set udg_TierOneTowers[19]='n047' // Ghoul (8)
+	set udg_TierOneTowers[20]='n029' // Gnoll (7)
+	set udg_TierOneTowers[21]='n032' // Hydra Hatchling (15)
+	set udg_TierOneTowers[22]='n03N' // Ice Troll (8)
+	set udg_TierOneTowers[23]='n01Y' // MAZE ME PLOX (3)
+	set udg_TierOneTowers[24]='n04K' // Mild-Mannered Chris (10)
+	set udg_TierOneTowers[25]='n05H' // Undead Dwarf (5)
+	set udg_TierOneTowers[26]='h02H' // Marine (10)
+	set udg_TierOneTowers[27]='h01P' // Minature Mecha Goblin (10)
+	set udg_TierOneTowers[28]='h012' // SkittlesRainbow (7)
+	set udg_TierOneTowers[29]='h01Z' // Spirit Wolf (8)
+	set udg_TierOneTowers[30]='n00A' // Draenei Guardian
 	
-	set udg_TierOneSize=31
+	set udg_TierOneSize=30
 
 	// TIER TWO 16 - 99
 	set udg_TierTwoTowers[0]='hC87' // Blue Dragon Whelp
-
 	set udg_TierTwoTowers[1]='hC27' // Crypt Fiend
-
 	set udg_TierTwoTowers[2]='hC80' // Huntress
+	set udg_TierTwoTowers[3]='o004' // Chaos Raider (40)
+	set udg_TierTwoTowers[4]='oC18' // Gargoyle (40)
+	set udg_TierTwoTowers[5]='oC19' // Headhunter (40)
+	set udg_TierTwoTowers[6]='o00A' // High Elf Archer (40)
+	set udg_TierTwoTowers[7]='oC35' // Ogre Warrior (40)
+	set udg_TierTwoTowers[8]='n00O' // Corrupted Ent (40)
+	set udg_TierTwoTowers[9]='n02J' // Blademastur (40)
+	set udg_TierTwoTowers[10]='n03Y' // Dark Troll Berserker (40)
+	set udg_TierTwoTowers[11]='n04L' // Decimator (40)
+	set udg_TierTwoTowers[12]='n049' // Fallen Archer (40)
+	set udg_TierTwoTowers[13]='n03O' // Ice Troll Berserker (40)
+	set udg_TierTwoTowers[14]='n05I' // Mortar Dwarves (30)
+	set udg_TierTwoTowers[15]='n02U' // MountedBlade (30)
+	set udg_TierTwoTowers[16]='n033' // Young Hydra (F) (40)
+	set udg_TierTwoTowers[17]='n048' // Zombie (40)
+	set udg_TierTwoTowers[18]='h02I' // Fel Clown (40)
+	set udg_TierTwoTowers[19]='h01Q' // Goblin Sapper (40)
+	set udg_TierTwoTowers[20]='h011' // TheMoonGoddess (45)
+	set udg_TierTwoTowers[21]='h020' // Water Elemental (40)
+	set udg_TierTwoTowers[22]='n00B' // Draenei Seer (48)
+	set udg_TierTwoTowers[23]='h03U' // Felhound
+	set udg_TierTwoTowers[24]='h00C' // Faerie Dragon (80)
+	set udg_TierTwoTowers[25]='o019' // Arachnid (50)
+	set udg_TierTwoTowers[26]='oC56' // Meat Wagon (80)
+	set udg_TierTwoTowers[27]='oC58' // Shaman (95)
+	set udg_TierTwoTowers[28]='h01E' // Gnoll Warden (60)
+	set udg_TierTwoTowers[29]='n056' // Cow Catapult (Sheep) (60)
+	set udg_TierTwoTowers[30]='n00M' // Den (60)
+	set udg_TierTwoTowers[31]='n00V' // Undead Frigate (50)
+	set udg_TierTwoTowers[32]='n04A' // Abomination (80)
+	set udg_TierTwoTowers[33]='n05J' // Dwarven Hunter (50)
+	set udg_TierTwoTowers[34]='n03E' // Forest Troll Berserker (50)
+	set udg_TierTwoTowers[35]='n02B' // Gnoll Brute (60)
+	set udg_TierTwoTowers[36]='n03P' // Ice Troll Trapper (80)
+	set udg_TierTwoTowers[37]='n04M' // Lord D.O.T (80)
+	set udg_TierTwoTowers[38]='n05K' // Mountain Dwarf (90)
+	set udg_TierTwoTowers[39]='n02V' // Scout (70)
+	set udg_TierTwoTowers[40]='n01T' // Stag (50)
+	set udg_TierTwoTowers[41]='n04V' // The B3ast (80)
+	set udg_TierTwoTowers[42]='h00Z' // Rusty_Arrow (75)
+	set udg_TierTwoTowers[43]='n00F' // Draenei Stalker (96)
 
-	set udg_TierTwoTowers[3]='h01H' // Snap Dragon
-
-	set udg_TierTwoTowers[4]='o004' // Chaos Raider (40)
-
-	set udg_TierTwoTowers[5]='oC18' // Gargoyle (40)
-
-	set udg_TierTwoTowers[6]='oC19' // Headhunter (40)
-
-	set udg_TierTwoTowers[7]='o00A' // High Elf Archer (40)
-
-	set udg_TierTwoTowers[8]='oC35' // Ogre Warrior (40)
-
-	set udg_TierTwoTowers[9]='n00O' // Corrupted Ent (40)
-
-	set udg_TierTwoTowers[10]='n02J' // Blademastur (40)
-
-	set udg_TierTwoTowers[11]='n03Y' // Dark Troll Berserker (40)
-
-	set udg_TierTwoTowers[12]='n04L' // Decimator (40)
-
-	set udg_TierTwoTowers[13]='n049' // Fallen Archer (40)
-
-	set udg_TierTwoTowers[14]='n03O' // Ice Troll Berserker (40)
-
-	set udg_TierTwoTowers[15]='n05I' // Mortar Dwarves (30)
-
-	set udg_TierTwoTowers[16]='n02U' // MountedBlade (30)
-
-	set udg_TierTwoTowers[17]='n033' // Young Hydra (F) (40)
-
-	set udg_TierTwoTowers[18]='n048' // Zombie (40)
-
-	set udg_TierTwoTowers[19]='h02I' // Fel Clown (40)
-
-	set udg_TierTwoTowers[20]='h01Q' // Goblin Sapper (40)
-
-	set udg_TierTwoTowers[21]='h011' // TheMoonGoddess (45)
-
-	set udg_TierTwoTowers[22]='h020' // Water Elemental (40)
-
-	set udg_TierTwoTowers[23]='n00B' // Draenei Seer (48)
-
-	set udg_TierTwoTowers[24]='h03U' // Felhound
-
-	set udg_TierTwoTowers[25]='h00C' // Faerie Dragon (80)
-
-	set udg_TierTwoTowers[26]='o019' // Arachnid (50)
-
-	set udg_TierTwoTowers[27]='oC56' // Meat Wagon (80)
-
-	set udg_TierTwoTowers[28]='oC58' // Shaman (95)
-
-	set udg_TierTwoTowers[29]='oC37' // Siren (90)
-
-	set udg_TierTwoTowers[30]='h01E' // Gnoll Warden (60)
-
-	set udg_TierTwoTowers[31]='n056' // Cow Catapult (Sheep) (60)
-
-	set udg_TierTwoTowers[32]='n00M' // Den (60)
-
-	set udg_TierTwoTowers[33]='n00V' // Undead Frigate (50)
-
-	set udg_TierTwoTowers[34]='n04A' // Abomination (80)
-
-	set udg_TierTwoTowers[35]='n05J' // Dwarven Hunter (50)
-
-	set udg_TierTwoTowers[36]='n03E' // Forest Troll Berserker (50)
-	set udg_TierTwoTowers[37]='n02B' // Gnoll Brute (60)
-
-	set udg_TierTwoTowers[38]='n03P' // Ice Troll Trapper (80)
-	set udg_TierTwoTowers[39]='n04M' // Lord D.O.T (80)
-
-	set udg_TierTwoTowers[40]='n05K' // Mountain Dwarf (90)
-
-	set udg_TierTwoTowers[41]='n02V' // Scout (70)
-
-	set udg_TierTwoTowers[42]='n01T' // Stag (50)
-
-	set udg_TierTwoTowers[43]='n04V' // The B3ast (80)
-
-	set udg_TierTwoTowers[44]='h00Z' // Rusty_Arrow (75)
-
-	set udg_TierTwoTowers[45]='n00F' // Draenei Stalker (96)
-
-	set udg_TierTwoSize=45
+	set udg_TierTwoSize=43
 
 	// TIER THREE 100 - 149
 	set udg_TierThreeTowers[0]='hC53' // Ancient Protector
@@ -3527,7 +3525,7 @@ function InitializeTowerTierArrays takes nothing returns nothing
 	set udg_TierThreeSize=21
 
 	// TIER FOUR 150 - 299
-	set udg_TierFourTowers[0]='h007' // Couatl
+	set udg_TierFourTowers[0]='hC89' // Adult Green Dragon (170)
 	set udg_TierFourTowers[1]='n00K' // Nerubian Webcaster (150)
 	set udg_TierFourTowers[2]='hC88' // Adult Bronze Dragon (160)
 	set udg_TierFourTowers[3]='h01D' // Forest Troll Shadow Priest (150)
@@ -3558,11 +3556,11 @@ function InitializeTowerTierArrays takes nothing returns nothing
 	set udg_TierFourTowers[28]='o00R' // Boneyard (250)
 	set udg_TierFourTowers[29]='o007' // Chaos Champ
 	set udg_TierFourTowers[30]='o012' // Chaos Shrine (250)
-	set udg_TierFourTowers[31]='o00W' // Dragon Turtle (250)
+	set udg_TierFourTowers[31]='h006' // Phoenix Egg (250)
 	set udg_TierFourTowers[32]='o00Z' // High Elf Ballista (250)
 	set udg_TierFourTowers[33]='o00C' // High Elf Spellbreaker (200)
 	set udg_TierFourTowers[34]='oC26' // Mountain Giant (200)
-	set udg_TierFourTowers[35]='oC61' // Myrmidon (200)
+	set udg_TierFourTowers[35]='h04E' // Archmage (200)
 	set udg_TierFourTowers[36]='o00X' // Rock Golem (250)
 	set udg_TierFourTowers[37]='oC64' // Tauren (200)
 	set udg_TierFourTowers[38]='h01B' // Druid of the Claw (200)
@@ -3580,17 +3578,14 @@ function InitializeTowerTierArrays takes nothing returns nothing
 	set udg_TierFourTowers[50]='h03O' // Goblin's Ogre (275)
 	set udg_TierFourTowers[51]='h026' // Lava Spawn (250)
 	set udg_TierFourTowers[52]='n00G' // Draenei Salamander (270)
-	set udg_TierFourTowers[53]='h006' // Phoenix Egg (250)
-	set udg_TierFourTowers[54]='hC89' // Adult Green Dragon (170)
-	set udg_TierFourTowers[55]='h04E' // Archmage (200)
 
-	set udg_TierFourSize=55
+	set udg_TierFourSize=52
 
 	// TIER FIVE 300 - 399
 	set udg_TierFiveTowers[0]='h03V' // Doom Guard
 	set udg_TierFiveTowers[1]='hC97' // Iron Golem
 	set udg_TierFiveTowers[2]='h00R' // Sacrificial Pit
-	set udg_TierFiveTowers[3]='hC99' // Tidal Guardian
+	set udg_TierFiveTowers[3]='h027' // Prawn (350)
 	set udg_TierFiveTowers[4]='h00X' // Nerubian Prince
 	set udg_TierFiveTowers[5]='hC92' // Ancient Nether Dragon (350)
 	set udg_TierFiveTowers[6]='h00B' // Priestess of the Moon (350)
@@ -3599,7 +3594,7 @@ function InitializeTowerTierArrays takes nothing returns nothing
 	set udg_TierFiveTowers[9]='o011' // Chaos Wyvern Rider (350)
 	set udg_TierFiveTowers[10]='oC67' // Flesh Golem (350)
 	set udg_TierFiveTowers[11]='o010' // High Elf Dragonhawk (350)
-	set udg_TierFiveTowers[12]='o00V' // Royal Guard (300)
+	set udg_TierFiveTowers[12]='h04B' // Cold Tower (300)
 	set udg_TierFiveTowers[13]='oC60' // Wyvern (350)
 	set udg_TierFiveTowers[14]='h01G' // Razormane (325)
 	set udg_TierFiveTowers[15]='n00N' // Corrupted Ancient of War (325)
@@ -3619,10 +3614,8 @@ function InitializeTowerTierArrays takes nothing returns nothing
 	set udg_TierFiveTowers[29]='h02L' // Hydralisk (350)
 	set udg_TierFiveTowers[30]='h01W' // Decepticon Goblin Autobot (375)
 	set udg_TierFiveTowers[31]='h015' // GK-Werdo4 (300)
-	set udg_TierFiveTowers[32]='h027' // Prawn (350)
-	set udg_TierFiveTowers[33]='h04B' // Cold Tower (300)
 
-	set udg_TierFiveSize=33
+	set udg_TierFiveSize=31
 
 	// TIER SIX 400 - 499
 	set udg_TierSixTowers[0]='h032' // Death Knight
@@ -3664,9 +3657,9 @@ function InitializeTowerTierArrays takes nothing returns nothing
 	set udg_TierSevenTowers[9]='oC74' // Dune Worm (500)
 	set udg_TierSevenTowers[10]='o015' // Giant King (600)
 	set udg_TierSevenTowers[11]='o008' // Gnom Hellscream (600)
-	set udg_TierSevenTowers[12]='oC62' // Illidan (600)
+	set udg_TierSevenTowers[12]='n00E' // Draenei Anti- Air Enginge (590)
 	set udg_TierSevenTowers[13]='o00G' // Jungle Stalker (500)
-	set udg_TierSevenTowers[14]='o014' // Lady Vashj (500)
+	set udg_TierSevenTowers[14]='h04C' // Boulder Tower (600)
 	set udg_TierSevenTowers[15]='o00U' // Phoenix (600)
 	set udg_TierSevenTowers[16]='oC91' // Pit Lord (550)
 	set udg_TierSevenTowers[17]='o00P' // Rexxar (600)
@@ -3697,10 +3690,7 @@ function InitializeTowerTierArrays takes nothing returns nothing
 	set udg_TierSevenTowers[42]='h018' // Gothic_Metal RVD (600)
 	set udg_TierSevenTowers[43]='h028' // Skeletal Mage (500)
 	set udg_TierSevenTowers[44]='h029' // Spirit Hawk (600)
-	set udg_TierSevenTowers[45]='n00E' // Draenei Anti- Air Enginge (590)
-	set udg_TierSevenTowers[46]='h04C' // Boulder Tower (600)
-
-	set udg_TierSevenSize=46
+	set udg_TierSevenSize=44
 
 	// TIER EIGHT 700 - 899
 	set udg_TierEightTowers[0]='h00P' // Queen Alexstrasza
@@ -3734,7 +3724,7 @@ function InitializeTowerTierArrays takes nothing returns nothing
 
 	// TIER NINE 900+
 	set udg_TierNineTowers[0]='h000' // Antonidas the Undead
-	set udg_TierNineTowers[1]='h02U' // Blademastur
+	set udg_TierNineTowers[1]='n030' // Blademastur
 	set udg_TierNineTowers[2]='h00V' // Arachnid God Spider
 	set udg_TierNineTowers[3]='h033' // ThaiBladeIsMastur (1337)
 	set udg_TierNineTowers[4]='h00S' // Tyrande (1000)
@@ -5015,7 +5005,7 @@ function PlayerChatCommandActions takes nothing returns nothing
 	elseif ( GetEventPlayerChatString() == "-waves" ) then
 		call DisplayMessageToTriggeringPlayer("|cFF999999Air:|r 5 / 15 / 20 / 25 / 30\n|cFF3737F2Boss:|r 9 / 14 / 19 / 24 / 29 / 31\n|cFFF2A137Champion:|r 35 / 36\n|cFF6d7c86Light:|r 4 / 8 / 11 / 16 / 19 / 23 / 27 / 32\n|cFF416073Medium:|r 3 / 7 / 12 / 17 / 24 / 28 / 33\n|cFF154360Heavy:|r 2 / 5 / 13 / 15 / 20 / 25 / 30 / 32 / 35\n|cFFCA8500Fortified:|r 10 / 18 / 22 / 26 / 31\n|cFF7525FFHero:|r 36")
 	elseif ( GetEventPlayerChatString() == "-help" ) then
-		call DisplayMessageToTriggeringPlayer("TRIGSTR_4798")
+		call DisplayMessageToTriggeringPlayer("Welcome to")
 	elseif ( GetEventPlayerChatString() == "-repick" ) then
 		if ( RepickConditions() ) then
 			call RepickActions()
@@ -5186,6 +5176,10 @@ function IsIndexDisabled takes integer indx returns boolean
 	if ( indx == 23 ) then
 		return true
 	endif
+    if ( indx == 8 ) then
+		return true
+	endif
+    
 
 	return false
 endfunction
@@ -5568,7 +5562,7 @@ endfunction
 // Trigger: Quests
 //===========================================================================
 function InitializeQuests takes nothing returns nothing
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Bot Mod v3.2", "Updates:\n-reduced Corrupted Moon Well's damage per second from 5 to 4 and the corruption duration from 25 to 15 seconds.", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
+	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Bot Mod v3.2", "Updates:\n-reduced Corrupted Moon Well's damage per second from 5 to 4 and the corruption duration from 25 to 15 seconds.\n\nChanges from Promises:\n-Added MMD standard, working on implementing it on everything.\n-Buffed Corruption Tower(Human).\n-Darkness Tower(Human) rebalanced to fix lag.\n3.2a: fixed bug where it didnt show teamname in lobby\n3.2.1:\n-fixed bug where it spammed MMD error.\n3.2.2:\n-removed nagas.\n3.2.3:\n-fixed bug where hybrids 1000g roll could be 8g BladeMastur.\n-Removed sell hotkey\n-added HCL ccommand h to force extreme.", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Bot Mod v3.1", "Updates:\n-reduced the attackspeed of Eliminator and reduced his damage from 200 - 200 to 175 - 175\n-increased Centaur Outrunner's cooldown from 0.75 to 1.25\n-lowered the attack range of a few more towers to 1000\n-reduced the cost of Gnoll Warden from 60 to 50 gold\n-moved some spawns around to make them more balanced and equal in size.\n-increased Goblin Alchemist's cooldown from 10 seconds to 60 seconds and reduced gold gained by 40%\n-increased Draenei Assassin's impale cooldown to 2 seconds.\n-buffed Arachnid Queen\n-released Hybrid Random\n-buffed some of the Giants' early towers slightly\n-reduced Knight's damage from 600 - 640 to 200 - 240\n-reduced Kael's Flame Strike animation time\n-buffed Chaos Orcs slightly (they're still not viable as a first pick!)", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Bot Mod v3.0d", "Updates:\n-timer should now show correct time in hours\n-fixed Dalaran Guard Tower, should now have splash\n-changed SkittlesRainbow a bit to reduce lag\n-Phoenix Egg is no longer broken and overpowered\n-started working on a fix for the slow effects\n-fixed denyall!\n-reworked Earth Pandaren's Drunken Haze ability\n-no towers should have a range higher than 1000 anymore\n-every tower now uses the same ground texture", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Bot Mod v3.0", "Updates:\n-fixed Flesh Golem, it should now set hp to 10\n-fixed Dwarven Warrior (for real this time)\n-Silver_Arrow should now be able to attack air like it's supposed to\n-Golden Hunter's attack is now 1600 - 1600 instead of 1600 - 3200\n-disabled Forest Trolls\n-disabled Ice Trolls\n-revamped the whole map design and layout\n-you can now deny players from building in your spawn\n-checkpoints are now buildable\n-created a -waves command", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
@@ -5593,26 +5587,7 @@ function InitializeQuests takes nothing returns nothing
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Bot Mod v1.2", "Updates:\n-reworked the movement system which removed a lot of spawn lag\nUpdate 2a:\n-fixed the timer again, ooops\n-fixed a bug where air waves were completely broken, ooops again?", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Bot Mod v1.1", "Updates:\n-removed cripple effect from ThaiTeaIsGood's global buffs\n-added new loading screen background\n-created a new race (Caerbannog) which needs balancing\n-removed bug when spamming the stop command with flesh golem\n-may have fixed the bug with enraged goblin's ogre, time will tell\n-buffed shipyard's earlier towers so they don't miss targets all the time\n-increased ghoul's attack speed\n-buffed Felguard and Felhound", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
 	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Bot Mod v1", "Updates:\n-removed bandit from race selection\n    (can still be randomed)\n-nerfed bandits so they can't steal from champions\n-removed a hidden cheat\n-removed the annoying rally pointers", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_5142", "TRIGSTR_5143", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_5139", "TRIGSTR_5140", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4900", "TRIGSTR_4901", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4904", "TRIGSTR_4905", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4902", "TRIGSTR_4903", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4898", "TRIGSTR_4899", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4833", "TRIGSTR_4834", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_3120", "TRIGSTR_3121", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4830", "TRIGSTR_4831", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4823", "TRIGSTR_4824", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4821", "TRIGSTR_4822", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4814", "TRIGSTR_4815", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4796", "TRIGSTR_4797", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4792", "TRIGSTR_4793", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4790", "TRIGSTR_4791", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4788", "TRIGSTR_4789", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4785", "TRIGSTR_4786", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4759", "TRIGSTR_4760", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4756", "TRIGSTR_4757", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
-	call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "TRIGSTR_4538", "TRIGSTR_4539", "ReplaceableTextures\\CommandButtons\\BTNAmbush.blp")
+	
 
 	call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Commands", "List of in-game commands\n\n|cffffcc00-waves|r (shows you information about every wave)\n|cffffcc00-air|r (tells you when air waves are coming)\n|cffffcc00-boss|r (Tells you when boss waves are coming)\n|cffffcc00-champion|r (tells you when champion waves are coming)\n|cffffcc00-light|r (tells you when light armored waves are coming)\n|cffffcc00-medium|r (tells you when medium armored waves are coming)\n|cffffcc00-heavy|r (tells you when heavy armored waves are coming)\n|cffffcc00-fortified|r (tells you when fortified armor waves are coming)\n|cffffcc00-hero|r (tells you when hero armored waves are coming)\n|cffffcc00-help|r (displays helpful information)\n|cffffcc00-sellall|r (sells all towers given to you when a player left)\n|cffffcc00-give <color>|r (gives away your currently selected towers to the specified color)", "ReplaceableTextures\\CommandButtons\\BTNReplay-Loop.blp")
 	call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Commands 2", "List of in-game commands\n\n|cffffcc00-deny <color>|r (denies the specified color access to your spawn and gives their towers to you)\n|cffffcc00-allow <color>|r (allows the specified color access to your spawn)\n|cffffcc00-denyall|r (denies access to your spawn for all players)\n|cffffcc00-allowall|r (allows access to your spawn for all players)\n|cffffcc00-zoom <value>|r (zooms your camera out)", "ReplaceableTextures\\CommandButtons\\BTNReplay-Loop.blp")
@@ -5648,8 +5623,9 @@ endfunction
 function UpdateScoreboard takes nothing returns nothing
  local integer playerid= GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ()))
 	set udg_PlayerKills[playerid]=udg_PlayerKills[playerid] + 1
-    call MMD__update_value(("KILLS" ) , ( GetOwningPlayer(GetKillingUnitBJ()) ) , MMD__ops[( MMD_OP_SET )] , I2S(( udg_PlayerKills[playerid])) , MMD_TYPE_INT) // INLINED!!
+    //call MMD_UpdateValueInt("KILLS",GetOwningPlayer(GetKillingUnitBJ()),MMD_OP_SET, udg_PlayerKills[playerid])
 	if ( udg_PlayerScorePosition[playerid] > 0 ) then
+        call MMD___update_value(("KILLS" ) , ( GetOwningPlayer(GetKillingUnitBJ()) ) , MMD___ops[( MMD_OP_SET )] , I2S(( udg_PlayerKills[playerid])) , MMD_TYPE_INT) // INLINED!!
 		call MultiboardSetItemValueBJ(udg_Scoreboard, 2, 7 + udg_PlayerScorePosition[playerid], I2S(udg_PlayerKills[playerid]))
 	endif
 endfunction
@@ -6499,7 +6475,7 @@ function InitCustomPlayerSlots takes nothing returns nothing
 endfunction
 
 function InitCustomTeams takes nothing returns nothing
-    // Force: TRIGSTR_762
+    // Force: TRIGSTR_6291
     call SetPlayerTeam(Player(0), 0)
     call SetPlayerState(Player(0), PLAYER_STATE_ALLIED_VICTORY, 1)
     call SetPlayerTeam(Player(1), 0)
@@ -6935,9 +6911,9 @@ function main takes nothing returns nothing
     call CreateAllUnits()
     call InitBlizzard()
 
-call ExecuteFunc("jasshelper__initstructs609546203")
-call ExecuteFunc("HCL__init")
-call ExecuteFunc("MMD__init")
+call ExecuteFunc("jasshelper__initstructs407673625")
+call ExecuteFunc("HCL___init")
+call ExecuteFunc("MMD___init")
 
     call InitGlobals()
     call InitCustomTriggers()
@@ -6951,7 +6927,7 @@ endfunction
 //***************************************************************************
 
 function config takes nothing returns nothing
-    call SetMapName("TRIGSTR_088")
+    call SetMapName("TRIGSTR_6276")
     call SetMapDescription("")
     call SetPlayers(13)
     call SetTeams(13)
@@ -6981,19 +6957,19 @@ endfunction
 
 
 //Struct method generated initializers/callers:
-function sa__MMD__QueueNode_onDestroy takes nothing returns boolean
+function sa__MMD___QueueNode_onDestroy takes nothing returns boolean
 local integer this=f__arg_this
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_VAL + s__MMD__QueueNode_key[this], s__MMD__QueueNode_msg[this])
-            call FlushStoredInteger(MMD__gc, MMD__M_KEY_CHK + s__MMD__QueueNode_key[this], s__MMD__QueueNode_key[this])
-            set s__MMD__QueueNode_msg[this]=null
-            set s__MMD__QueueNode_key[this]=null
-            set s__MMD__QueueNode_next[this]=0
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_VAL + s__MMD___QueueNode_key[this], s__MMD___QueueNode_msg[this])
+            call FlushStoredInteger(MMD___gc, MMD___M_KEY_CHK + s__MMD___QueueNode_key[this], s__MMD___QueueNode_key[this])
+            set s__MMD___QueueNode_msg[this]=null
+            set s__MMD___QueueNode_key[this]=null
+            set s__MMD___QueueNode_next[this]=0
    return true
 endfunction
 
-function jasshelper__initstructs609546203 takes nothing returns nothing
-    set st__MMD__QueueNode_onDestroy=CreateTrigger()
-    call TriggerAddCondition(st__MMD__QueueNode_onDestroy,Condition( function sa__MMD__QueueNode_onDestroy))
+function jasshelper__initstructs407673625 takes nothing returns nothing
+    set st__MMD___QueueNode_onDestroy=CreateTrigger()
+    call TriggerAddCondition(st__MMD___QueueNode_onDestroy,Condition( function sa__MMD___QueueNode_onDestroy))
 
 
 endfunction
