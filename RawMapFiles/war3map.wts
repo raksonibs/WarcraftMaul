@@ -4342,12 +4342,6 @@ STRING 2292
 The Ancient Red provides high damage with Critical Strike. It has a long range only surpassed by deathwing, but a long cooldown. Still, it is a good idea to get one of these.  |CFF00FF00(Average(1.60)/400-450 Normal Damage/800 Range)
 }
 
-STRING 2293
-// Units: hC92 (Ancient Nether Dragon), Ubertip (Tooltip - Extended)
-{
-The Ancient Nether does 550 damage to a group of enemies near it.   If the enemies have less then 551 life it will not target them!  |CFF00FF00(Slow(2.50)/550 Damage/400 Range)
-}
-
 STRING 2294
 // Units: h00B (Priestess of the Moon), Ubertip (Tooltip - Extended)
 {
@@ -18089,7 +18083,7 @@ An advanced high tier Hybrid Builder.
 
 STRING 6276
 {
-WarCraft Maul: BotMod v3.2.3
+WarCraft Maul: BotMod v3.2.7
 }
 
 STRING 6277
@@ -18178,5 +18172,26 @@ An improved version of the arcane tower that shoots corrption missiles at enemie
 STRING 6291
 {
 Protectors
+}
+
+STRING 6292
+// Units: hC92 (Ancient Nether Dragon), Ubertip (Tooltip - Extended)
+{
+The Ancient Nether does 550 damage to a group of enemies near it.   If the enemies have less then 551 life it will not target them!
+|cffffcc00Attack:|r Chaos 
+|cffffcc00Cooldown:|r 1.25 
+|cffffcc00Damage:|r 550 
+|cffffcc00Range:|r 500 
+|cffffcc00Ability:|r Splash; the area of effect is 150 - doesn't attack if lower than 551
+}
+
+STRING 6293
+{
+Player 14
+}
+
+STRING 6294
+{
+Scrubs
 }
 
